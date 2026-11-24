@@ -1,83 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "contact-panels",
       "blocks": {
-        "phone": {
-          "type": "tile",
-          "settings": {
-            "label": "Phone",
-            "value": "+92 330 865 3077",
-            "description": "Call for order support and urgent help.",
-            "url": "tel:+923308653077",
-            "cta": "Call now"
-          }
-        },
-        "email": {
-          "type": "tile",
-          "settings": {
-            "label": "Email",
-            "value": "utanveer485@gmail.com",
-            "description": "Best for detailed questions and business requests.",
-            "url": "mailto:utanveer485@gmail.com",
-            "cta": "Send email"
-          }
-        },
-        "location": {
-          "type": "tile",
-          "settings": {
-            "label": "Location",
-            "value": "Karachi, Pakistan",
-            "description": "Serving customers across Pakistan with trusted shipping partners.",
-            "url": "",
-            "cta": ""
-          }
-        },
-        "hours": {
-          "type": "tile",
-          "settings": {
-            "label": "Support Hours",
-            "value": "Mon - Sat, 10AM to 8PM",
-            "description": "Responses are typically shared within a few hours.",
-            "url": "",
-            "cta": ""
-          }
-        },
-        "c1": {
-          "type": "chip",
-          "settings": {
-            "text": "Order support"
-          }
-        },
-        "c2": {
-          "type": "chip",
-          "settings": {
-            "text": "Delivery updates"
-          }
-        },
-        "c3": {
-          "type": "chip",
-          "settings": {
-            "text": "Product guidance"
-          }
-        }
+        "phone": { "type": "tile", "settings": { "label": "Phone", "value": "+92 330 865 3077", "description": "Call for order support and urgent help.", "url": "tel:+923308653077", "cta": "Call now" } },
+        "email": { "type": "tile", "settings": { "label": "Email", "value": "utanveer485@gmail.com", "description": "Best for detailed questions and business requests.", "url": "mailto:utanveer485@gmail.com", "cta": "Send email" } },
+        "location": { "type": "tile", "settings": { "label": "Location", "value": "Karachi, Pakistan", "description": "Serving customers across Pakistan with trusted shipping partners." } },
+        "hours": { "type": "tile", "settings": { "label": "Support Hours", "value": "Mon - Sat, 10AM to 8PM", "description": "Responses are typically shared within a few hours." } },
+        "c1": { "type": "chip", "settings": { "text": "Order support" } },
+        "c2": { "type": "chip", "settings": { "text": "Delivery updates" } },
+        "c3": { "type": "chip", "settings": { "text": "Product guidance" } }
       },
-      "block_order": [
-        "phone",
-        "email",
-        "location",
-        "hours",
-        "c1",
-        "c2",
-        "c3"
-      ],
+      "block_order": ["phone", "email", "location", "hours", "c1", "c2", "c3"],
       "settings": {
         "call_url": "tel:+923308653077",
         "email_url": "mailto:utanveer485@gmail.com"
       }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }
