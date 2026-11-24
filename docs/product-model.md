@@ -52,3 +52,16 @@ Only one needed: `custom.source_id` (above). No other source field lacks a Shopi
 - Products: 0. Collections: 1 (`frontpage`, "Home page"). Menus: `main-menu`, `footer`, `customer-account-main-menu`.
 - No handle collisions with `scripts/catalog.json`.
 - Plan: create **new** menus `brewphoria-main` and `brewphoria-footer` rather than editing the default ones (editing would overwrite store data, which needs Ahsan's approval). The theme's header and footer menu settings then point at the new menus.
+
+## Migration result (2026-11-24)
+
+Written to the connected store with Ahsan's approval of `scripts/catalog.json`:
+
+- 7 manual collections: Coffee, Hot Chocolate, Matcha & Friends, Chocolate, Munchables, Spreads, Best Sellers. **Unpublished** (Shopify default). Publish them to the Online Store when the products are activated, or the storefront cannot show them.
+- Metafield definition `custom.source_id` (product, single line text).
+- 8 products, all `DRAFT`, 21 images, one `Size` variant each. Read back from Shopify and compared with `catalog.json`: handles, product types, prices, variant titles, image counts, source ids and collection membership all match.
+- 2 new menus: `brewphoria-main` (HOME, PRODUCTS, ABOUT, CONTACT) and `brewphoria-footer` (Home, About us). The default `main-menu` and `footer` were not changed. ABOUT and CONTACT point to `/pages/about` and `/pages/contact`, which do not exist yet.
+- Side effect to know about: the store's own "Home page" collection (`frontpage`) now contains the first product. Shopify added it, not this project. It was left as is.
+- Draft products are invisible to customers and to collection pages in the theme preview. Seeing real products in the preview needs them set to Active (Ahsan's call).
+
+Re-running: match on `handle` (and `custom.source_id`) so a second run updates instead of duplicating.
