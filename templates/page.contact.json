@@ -71,7 +71,10 @@
         "c2",
         "c3"
       ],
-      "settings": {}
+      "settings": {
+        "call_url": "tel:+923308653077",
+        "email_url": "mailto:utanveer485@gmail.com"
+      }
     }
   },
   "order": [
