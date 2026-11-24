@@ -93,7 +93,7 @@ class ProductForm extends HTMLElement {
     });
     this.idInput.value = button.dataset.variantId;
     this.submit.disabled = button.dataset.available !== 'true';
-    this.hint.textContent = this.hint.dataset.ready.replace('{{ size }}', button.dataset.title);
+    this.hint.textContent = this.hint.dataset.ready.replace('__size__', button.dataset.title);
     if (this.price) this.price.textContent = button.dataset.optionPrice;
   }
 
