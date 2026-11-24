@@ -99,7 +99,15 @@
       }
     },
     "main_search": {
-      "name": "Search"
+      "name": "Search",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        }
+      }
     },
     "main_password": {
       "name": "Password"
@@ -176,6 +184,139 @@
         },
         "limit": {
           "label": "Products to show"
+        }
+      }
+    },
+    "about_intro": {
+      "name": "About intro",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "image_alt": {
+          "label": "Image alt text"
+        },
+        "eyebrow": {
+          "label": "Eyebrow"
+        },
+        "lead": {
+          "label": "Lead paragraph"
+        },
+        "text": {
+          "label": "Paragraph"
+        },
+        "mission_title": {
+          "label": "Mission title"
+        },
+        "mission_text": {
+          "label": "Mission text"
+        },
+        "image": {
+          "label": "Image",
+          "info": "Leave empty to use the About image shipped with the theme."
+        }
+      }
+    },
+    "why_choose_us": {
+      "name": "Why choose us",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "feature": {
+          "name": "Feature",
+          "settings": {
+            "title": {
+              "label": "Title"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "contact_panels": {
+      "name": "Contact",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "image_alt": {
+          "label": "Image alt text"
+        },
+        "eyebrow": {
+          "label": "Side panel eyebrow"
+        },
+        "heading": {
+          "label": "Side panel heading"
+        },
+        "text": {
+          "label": "Side panel text"
+        },
+        "call_label": {
+          "label": "Call button label"
+        },
+        "call_url": {
+          "label": "Call button link"
+        },
+        "email_label": {
+          "label": "Email button label"
+        },
+        "email_url": {
+          "label": "Email button link"
+        },
+        "image": {
+          "label": "Image",
+          "info": "Leave empty to use the contact image shipped with the theme."
+        }
+      },
+      "blocks": {
+        "tile": {
+          "name": "Info tile",
+          "settings": {
+            "label": {
+              "label": "Label"
+            },
+            "value": {
+              "label": "Value"
+            },
+            "description": {
+              "label": "Description"
+            },
+            "cta": {
+              "label": "Link text"
+            },
+            "url": {
+              "label": "Link",
+              "info": "Optional. Makes the tile clickable, for example tel: or mailto:."
+            }
+          }
+        },
+        "chip": {
+          "name": "Chip",
+          "settings": {
+            "text": {
+              "label": "Text"
+            }
+          }
         }
       }
     }

@@ -1,0 +1,120 @@
+<section class="why">
+  <div class="why__title">
+    {% render 'section-title', text1: section.settings.title_first, text2: section.settings.title_second %}
+  </div>
+
+  <div class="why__panel">
+    <div class="why__intro">
+      <div class="why__intro-row">
+        <h3 class="why__heading">{{ section.settings.heading }}</h3>
+        <p class="why__text">{{ section.settings.text }}</p>
+      </div>
+    </div>
+
+    <ul class="why__cards">
+      {%- for block in section.blocks -%}
+        <li class="why__card" {{ block.shopify_attributes }}>
+          <div class="why__number">{{ forloop.index | prepend: '0' }}</div>
+          <b class="why__card-title">{{ block.settings.title }}</b>
+          <p class="why__card-text">{{ block.settings.text }}</p>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% stylesheet %}
+  .why__title { padding-block: 1rem; text-align: center; font-size: 1.5rem; line-height: 2rem; }
+  .why__panel {
+    margin-bottom: 5rem; overflow: hidden; border: 1px solid #efcdb8; border-radius: var(--radius-feature);
+    background: radial-gradient(circle at top left, rgb(255 255 255 / 0.95), rgb(249 223 203 / 0.9) 45%, rgb(235 184 146 / 0.82) 100%);
+    box-shadow: var(--shadow-feature);
+  }
+  .why__intro { padding: 2rem 1.5rem; }
+  .why__intro-row { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+  .why__heading { max-width: 36rem; font-size: 1.875rem; line-height: 1.25; font-weight: 600; color: #352117; }
+  .why__text { max-width: 28rem; font-size: 0.875rem; line-height: 1.75rem; color: #6e5447; }
+  .why__cards { display: grid; grid-template-columns: 1fr; gap: 1px; background: #efcdb8; }
+  .why__card { padding: 2.5rem 2rem; }
+  .why__card:nth-child(1) { background: linear-gradient(180deg, rgb(255 248 242 / 0.98), rgb(255 239 225 / 0.95)); }
+  .why__card:nth-child(2) { background: linear-gradient(180deg, rgb(255 244 236 / 0.98), rgb(255 231 213 / 0.94)); }
+  .why__card:nth-child(3) { background: linear-gradient(180deg, rgb(255 239 228 / 0.98), rgb(250 220 197 / 0.94)); }
+  .why__number {
+    display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; margin-bottom: 1.5rem;
+    border-radius: var(--radius-pill); background: #2f1d14; color: #fff; font-size: 0.875rem; line-height: 1.25rem; font-weight: 600;
+  }
+  .why__card:nth-child(2) .why__number { background: #9a4e23; }
+  .why__card:nth-child(3) .why__number { background: #c76d3a; }
+  .why__card-title { font-size: 1.125rem; line-height: 1.75rem; font-weight: 700; color: #2f1d14; }
+  .why__card-text { margin-top: 1rem; line-height: 1.75rem; color: #6d584b; }
+  @media (min-width: 640px) {
+    .why__intro { padding-inline: 2.5rem; }
+    .why__card { padding-inline: 2.5rem; }
+  }
+  @media (min-width: 768px) {
+    .why__intro { padding: 2.5rem 3rem; }
+    .why__intro-row { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+    .why__cards { grid-template-columns: repeat(3, 1fr); }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.why_choose_us.name",
+  "settings": [
+    { "type": "text", "id": "title_first", "label": "t:sections.why_choose_us.settings.title_first.label", "default": "WHY" },
+    { "type": "text", "id": "title_second", "label": "t:sections.why_choose_us.settings.title_second.label", "default": "CHOOSE US" },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "t:sections.why_choose_us.settings.heading.label",
+      "default": "A richer shopping experience, designed to feel polished from browse to brew."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:sections.why_choose_us.settings.text.label",
+      "default": "We blend standout products, thoughtful presentation, and dependable service so the whole experience feels premium instead of ordinary."
+    }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "t:sections.why_choose_us.blocks.feature.name",
+      "settings": [
+        { "type": "text", "id": "title", "label": "t:sections.why_choose_us.blocks.feature.settings.title.label", "default": "Feature" },
+        { "type": "textarea", "id": "text", "label": "t:sections.why_choose_us.blocks.feature.settings.text.label" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.why_choose_us.name",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Quality With Character",
+            "text": "Every item is chosen for taste, consistency, and feel, so you are not just buying products, you are choosing a collection with personality and care behind it."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Simple, Seamless Shopping",
+            "text": "We keep the experience clean and intuitive, making it easy to explore products, compare options, and place your order without clutter or confusion."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Support That Feels Human",
+            "text": "Questions, updates, and problem-solving are handled with clarity and warmth so you always feel looked after before, during, and after your order arrives."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

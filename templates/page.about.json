@@ -1,9 +1,44 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "intro": {
+      "type": "about-intro",
+      "settings": {}
+    },
+    "why": {
+      "type": "why-choose-us",
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "Quality With Character",
+            "text": "Every item is chosen for taste, consistency, and feel, so you are not just buying products, you are choosing a collection with personality and care behind it."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Simple, Seamless Shopping",
+            "text": "We keep the experience clean and intuitive, making it easy to explore products, compare options, and place your order without clutter or confusion."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Support That Feels Human",
+            "text": "Questions, updates, and problem-solving are handled with clarity and warmth so you always feel looked after before, during, and after your order arrives."
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
       "settings": {}
     }
   },
-  "order": ["main"]
+  "order": [
+    "intro",
+    "why"
+  ]
 }
