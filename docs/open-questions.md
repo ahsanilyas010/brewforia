@@ -12,7 +12,7 @@
 
 | # | Question | Default used |
 |---|---|---|
-| 1 | Contact page shows `+92 330 865 3077`, `utanveer485@gmail.com`, "Karachi, Pakistan", "Mon - Sat, 10AM to 8PM". Footer shows placeholders `+1-000-000-0000` and `hello@brewphoria.com`. Which details are right for the Shopify store? | Copy both exactly as in the source and flag. Store email on file is a different address. |
+| 1 | Contact page originally showed `+92 330 865 3077`, `utanveer485@gmail.com`, "Karachi, Pakistan". **Changed by Ahsan: location is now Islamabad and the phone is the dummy `+92 300 0000000` (also used in the footer).** The email is still the source's. Replace the dummy number with the real one, "Mon - Sat, 10AM to 8PM". Footer shows placeholders `+1-000-000-0000` and `hello@brewphoria.com`. Which details are right for the Shopify store? | Copy both exactly as in the source and flag. Store email on file is a different address. |
 | 2 | Footer "Instagram" link goes to `https://www.instagram.com/` (generic). Real profile URL? | Social link setting left empty, footer link hidden until set. |
 | 3 | Footer "Delivery" and "Privacy policy" are plain text. Create policy pages in Shopify and link them? | Shown as text like the source. |
 | 4 | Product page has filler tab text ("kopi-luwak, siphon, crema, and barista", "Coffee please") and a "Reviews" tab that does nothing. | Keep the Description tab with the real product description. Drop the filler and the dead Reviews tab. Tell me if you want them kept. |
