@@ -8,6 +8,18 @@
     "theme_support_url": "https://github.com/ahsanilyas010/brewforia/issues"
   },
   {
+    "name": "t:settings_schema.brand.name",
+    "settings": [
+      {
+        "type": "text",
+        "id": "brand_name",
+        "label": "t:settings_schema.brand.brand_name.label",
+        "info": "t:settings_schema.brand.brand_name.info",
+        "default": "Brewphoria"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.colors.name",
     "settings": [
       {

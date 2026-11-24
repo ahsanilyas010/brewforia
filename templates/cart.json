@@ -2,7 +2,12 @@
   "sections": {
     "main": {
       "type": "main-cart",
-      "settings": {}
+      "settings": {
+        "title_first": "MY",
+        "title_second": "CART",
+        "total_first": "TOTAL",
+        "total_second": "AMOUNT"
+      }
     }
   },
   "order": ["main"]

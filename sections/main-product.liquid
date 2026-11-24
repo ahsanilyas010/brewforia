@@ -1,42 +1,156 @@
-{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- liquid
+  assign only_default = product.has_only_default_variant
+  assign first_available = product.first_available_variant
+  assign from_price = product.price_min | money_without_trailing_zeros
+  assign trust_items = section.settings.trust_items | newline_to_br | strip_newlines | split: '<br />'
+  assign select_hint = 'products.select_size_hint' | t
+  if only_default
+    assign select_hint = ''
+  endif
+  assign ready_hint = 'products.ready_to_add' | t: size: '__size__'
+  assign added_text = 'products.added' | t
+-%}
 
-<div class="product" data-product-id="{{ product.id }}">
-  <div class="product__media">
-    {%- for media in product.media -%}
-      {%- if media.media_type == 'image' -%}
-        {{ media | image_url: width: 1200 | image_tag: widths: '400, 600, 900, 1200', sizes: '(min-width: 768px) 50vw, 100vw', loading: 'lazy', alt: media.alt | default: product.title }}
-      {%- endif -%}
-    {%- endfor -%}
+<div class="product">
+  <div class="product__layout">
+    <product-gallery class="product__gallery">
+      <div class="product__thumbs">
+        {%- for media in product.media -%}
+          {%- if media.media_type == 'image' -%}
+            <button class="product__thumb" type="button" data-thumb aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
+              {{ media | image_url: width: 240 | image_tag: widths: '120, 240', sizes: '(min-width: 640px) 15vw, 24vw', loading: 'lazy', alt: media.alt | default: product.title }}
+            </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="product__slides">
+        {%- for media in product.media -%}
+          {%- if media.media_type == 'image' -%}
+            <div class="product__slide" data-slide{% unless forloop.first %} hidden{% endunless %}>
+              {%- if forloop.first -%}
+                {{ media | image_url: width: 1200 | image_tag: widths: '400, 600, 900, 1200', sizes: '(min-width: 640px) 40vw, 100vw', loading: 'eager', fetchpriority: 'high', alt: media.alt | default: product.title }}
+              {%- else -%}
+                {{ media | image_url: width: 1200 | image_tag: widths: '400, 600, 900, 1200', sizes: '(min-width: 640px) 40vw, 100vw', loading: 'lazy', alt: media.alt | default: product.title }}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </product-gallery>
+
+    <product-form class="product__info">
+      <h1 class="product__title">{{ product.title }}</h1>
+      <p class="product__price" data-price data-from="{{ 'products.from_price' | t: price: from_price }}">
+        {%- if only_default -%}
+          {{ first_available.price | money_without_trailing_zeros }}
+        {%- else -%}
+          {{ 'products.from_price' | t: price: from_price }}
+        {%- endif -%}
+      </p>
+      <div class="product__description">{{ product.description }}</div>
+
+      {%- form 'product', product -%}
+        <input type="hidden" name="id" data-variant-id value="{% if only_default %}{{ first_available.id }}{% endif %}">
+
+        {%- unless only_default -%}
+          <div class="product__options">
+            <p class="product__options-label" id="options-label-{{ section.id }}">{{ 'products.select_size' | t }}</p>
+            <div class="product__option-list" role="group" aria-labelledby="options-label-{{ section.id }}">
+              {%- for variant in product.variants -%}
+                {%- assign variant_price = variant.price | money_without_trailing_zeros -%}
+                <button
+                  class="option-button"
+                  type="button"
+                  aria-pressed="false"
+                  data-option
+                  data-variant-id="{{ variant.id }}"
+                  data-available="{{ variant.available }}"
+                  data-title="{{ variant.title | escape }}"
+                  data-option-price="{{ variant_price }}"
+                >{{ variant.title }}</button>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endunless -%}
+
+        <div class="product__cart">
+          <button class="button button--add-to-cart" type="submit" data-submit{% if only_default and first_available %}{% else %} disabled{% endif %}>
+            <span>{{ 'products.add_to_cart' | t }}</span>
+            <span class="product__plus" aria-hidden="true">+</span>
+          </button>
+          <p class="product__hint" data-hint data-select="{{ select_hint }}" data-ready="{{ ready_hint }}">{{ select_hint }}</p>
+          <p class="visually-hidden" role="status" data-live data-added="{{ added_text }}"></p>
+        </div>
+      {%- endform -%}
+
+      <hr class="product__rule">
+      <ul class="product__trust">
+        {%- for item in trust_items -%}
+          {%- if item != blank -%}<li>{{ item }}</li>{%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </product-form>
   </div>
 
-  <div class="product__info">
-    <h1>{{ product.title }}</h1>
-    <p class="product__price">{{ current_variant.price | money }}</p>
-    <div class="product__description">{{ product.description }}</div>
-
-    {%- form 'product', product -%}
-      <label for="variant-{{ section.id }}">{{ 'products.select_option' | t }}</label>
-      <select id="variant-{{ section.id }}" name="id">
-        {%- for variant in product.variants -%}
-          <option value="{{ variant.id }}"{% if variant == current_variant %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>
-            {{- variant.title }} - {{ variant.price | money -}}
-          </option>
-        {%- endfor -%}
-      </select>
-      <button type="submit"{% unless current_variant.available %} disabled{% endunless %}>
-        {%- if current_variant.available -%}
-          {{ 'products.add_to_cart' | t }}
-        {%- else -%}
-          {{ 'products.sold_out' | t }}
-        {%- endif -%}
-      </button>
-    {%- endform -%}
+  <div class="product__tabs">
+    <h2 class="product__tab">{{ 'products.description' | t }}</h2>
+    <div class="product__tab-panel">{{ product.description }}</div>
   </div>
 </div>
+
+{% stylesheet %}
+  .product { padding-top: 2.5rem; border-top: 2px solid; }
+  .product__layout { display: flex; flex-direction: column; gap: 3rem; }
+  .product__gallery { display: flex; flex-direction: column-reverse; flex: 1; gap: 0.75rem; }
+  .product__thumbs { display: flex; justify-content: space-between; width: 100%; overflow-x: auto; }
+  .product__thumb { flex-shrink: 0; width: 24%; cursor: pointer; }
+  .product__thumb img { width: 100%; }
+  .product__slides { width: 100%; }
+  .product__slide[hidden] { display: none; }
+  .product__slide img { width: 100%; height: auto; }
+  .product__info { display: block; flex: 1; }
+  .product__title { margin-top: 0.5rem; font-size: 1.5rem; line-height: 2rem; font-weight: 500; }
+  .product__price { margin-top: 1.25rem; font-size: 1.875rem; line-height: 2.25rem; font-weight: 500; }
+  .product__description { margin-top: 1.25rem; color: var(--color-gray-500); }
+  .product__options { display: flex; flex-direction: column; gap: 1rem; margin-block: 2rem; }
+  .product__options-label { font-weight: 500; }
+  .product__option-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .product__cart { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+  .product__plus { font-size: 1rem; line-height: 1; transition: transform var(--duration-base); }
+  .button--add-to-cart:hover .product__plus { transform: translateX(0.25rem); }
+  .product__hint { font-size: 0.75rem; line-height: 1rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-gray-500); }
+  .product__rule { margin-top: 2rem; }
+  .product__trust { display: flex; flex-direction: column; gap: 0.25rem; margin-top: 1.25rem; font-size: 0.875rem; line-height: 1.25rem; color: var(--color-gray-500); }
+  .product__tabs { margin-top: 5rem; }
+  .product__tab { display: inline-block; padding: 0.75rem 1.25rem; border: 1px solid; font-size: 0.875rem; line-height: 1.25rem; font-weight: 700; }
+  .product__tab-panel { padding: 1.5rem; border: 1px solid var(--color-gray-500); font-size: 0.875rem; line-height: 1.25rem; color: var(--color-gray-500); }
+  @media (min-width: 640px) {
+    .product__layout { flex-direction: row; }
+    .product__gallery { flex-direction: row; }
+    .product__thumbs { flex-direction: column; justify-content: flex-start; width: 18.7%; overflow-x: visible; overflow-y: scroll; }
+    .product__thumb { width: 100%; margin-bottom: 0.75rem; }
+    .product__slides { width: 80%; }
+    .product__cart { width: fit-content; }
+  }
+  @media (min-width: 768px) {
+    .product__description { width: 80%; }
+  }
+  @media (min-width: 640px) {
+    .product__rule, .product__trust { width: 80%; }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
   "name": "t:sections.main_product.name",
-  "settings": []
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "trust_items",
+      "label": "t:sections.main_product.settings.trust_items.label",
+      "info": "t:sections.main_product.settings.trust_items.info",
+      "default": "100% Original Product\nCash on Delivery Available\nEasy exchange and return policy"
+    }
+  ]
 }
 {% endschema %}

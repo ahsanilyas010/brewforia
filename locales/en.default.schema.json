@@ -11,19 +11,27 @@
     "footer": {
       "name": "Footer",
       "settings": {
-        "menu": {
-          "label": "Menu"
-        }
-      }
-    },
-    "rich_text": {
-      "name": "Rich text",
-      "settings": {
-        "heading": {
-          "label": "Heading"
+        "blurb": {
+          "label": "Description"
         },
-        "text": {
-          "label": "Text"
+        "company_heading": {
+          "label": "First column heading"
+        },
+        "menu": {
+          "label": "First column menu"
+        },
+        "extra_items": {
+          "label": "Extra text items",
+          "info": "One per line. Shown as plain text after the menu links."
+        },
+        "contact_heading": {
+          "label": "Contact heading"
+        },
+        "phone": {
+          "label": "Phone"
+        },
+        "email": {
+          "label": "Email"
         }
       }
     },
@@ -34,16 +42,61 @@
       "name": "Not found"
     },
     "main_collection": {
-      "name": "Collection"
+      "name": "Collection",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "filters_heading": {
+          "label": "Filters heading"
+        },
+        "categories_heading": {
+          "label": "Categories heading"
+        }
+      },
+      "blocks": {
+        "category": {
+          "name": "Category",
+          "settings": {
+            "label": {
+              "label": "Label",
+              "info": "Matched against the product type, ignoring case."
+            }
+          }
+        }
+      }
     },
     "main_list_collections": {
       "name": "Collections list"
     },
     "main_product": {
-      "name": "Product"
+      "name": "Product",
+      "settings": {
+        "trust_items": {
+          "label": "Trust list",
+          "info": "One line per item."
+        }
+      }
     },
     "main_cart": {
-      "name": "Cart"
+      "name": "Cart",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "total_first": {
+          "label": "Total box title, first word"
+        },
+        "total_second": {
+          "label": "Total box title, second word"
+        }
+      }
     },
     "main_search": {
       "name": "Search"
@@ -56,6 +109,73 @@
       "settings": {
         "product": {
           "label": "Sample product"
+        }
+      }
+    },
+    "hero_banner": {
+      "name": "Hero banner",
+      "settings": {
+        "image": {
+          "label": "Image",
+          "info": "Leave empty to use the Brewphoria hero image shipped with the theme."
+        },
+        "image_alt": {
+          "label": "Image alt text"
+        },
+        "button_label": {
+          "label": "Button label"
+        },
+        "button_link": {
+          "label": "Button link"
+        }
+      }
+    },
+    "product_grid": {
+      "name": "Product grid",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "description": {
+          "label": "Description"
+        },
+        "collection": {
+          "label": "Collection",
+          "info": "Leave empty to use all products."
+        },
+        "limit": {
+          "label": "Products to show"
+        }
+      }
+    },
+    "newsletter": {
+      "name": "Newsletter",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "button_label": {
+          "label": "Button label"
+        }
+      }
+    },
+    "related_products": {
+      "name": "Related products",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "limit": {
+          "label": "Products to show"
         }
       }
     }
@@ -120,6 +240,13 @@
       "name": "Social links",
       "instagram": {
         "label": "Instagram URL"
+      }
+    },
+    "brand": {
+      "name": "Brand",
+      "brand_name": {
+        "label": "Brand name",
+        "info": "Shown in the footer, mobile menu, alt text and page titles. The source storefront uses Brewphoria."
       }
     }
   }

@@ -2,7 +2,19 @@
   "sections": {
     "main": {
       "type": "main-collection",
-      "settings": {}
+      "blocks": {
+        "coffee": { "type": "category", "settings": { "label": "COFFEE" } },
+        "hot_chocolate": { "type": "category", "settings": { "label": "HOT CHOCOLATE" } },
+        "matcha": { "type": "category", "settings": { "label": "MATCHA & FRIENDS" } },
+        "chocolate": { "type": "category", "settings": { "label": "CHOCOLATE" } },
+        "munchables": { "type": "category", "settings": { "label": "MUNCHABLES" } },
+        "spreads": { "type": "category", "settings": { "label": "SPREADS" } }
+      },
+      "block_order": ["coffee", "hot_chocolate", "matcha", "chocolate", "munchables", "spreads"],
+      "settings": {
+        "title_first": "OUR",
+        "title_second": "PRODUCTS"
+      }
     }
   },
   "order": ["main"]

@@ -1,0 +1,83 @@
+{%- liquid
+  assign grid_collection = section.settings.collection
+  if grid_collection == blank
+    assign grid_collection = collections.all
+  endif
+-%}
+
+<section class="product-grid">
+  <div class="product-grid__header">
+    <div class="product-grid__title">
+      {% render 'section-title', text1: section.settings.title_first, text2: section.settings.title_second %}
+    </div>
+    {%- if section.settings.description != blank -%}
+      <p class="product-grid__description">{{ section.settings.description }}</p>
+    {%- endif -%}
+  </div>
+
+  <ul class="product-grid__list">
+    {%- for product in grid_collection.products limit: section.settings.limit -%}
+      <li>{% render 'product-card', product: product %}</li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% stylesheet %}
+  .product-grid { margin-block: 5rem; }
+  .product-grid__header { padding-block: 1rem; text-align: center; }
+  .product-grid__title { font-size: 1.875rem; line-height: 2.25rem; font-weight: 700; }
+  .product-grid__description { max-width: 42rem; margin: 0.75rem auto 0; font-size: 0.875rem; line-height: 1.75rem; color: var(--color-text); }
+  .product-grid__list { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+  @media (min-width: 640px) {
+    .product-grid__description { font-size: 1rem; }
+    .product-grid__list { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) { .product-grid__list { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 1280px) { .product-grid__list { grid-template-columns: repeat(5, 1fr); } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.product_grid.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_first",
+      "label": "t:sections.product_grid.settings.title_first.label",
+      "default": "What's"
+    },
+    {
+      "type": "text",
+      "id": "title_second",
+      "label": "t:sections.product_grid.settings.title_second.label",
+      "default": "NEW"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:sections.product_grid.settings.description.label",
+      "default": "Freshly selected favorites with bold character, cozy notes, and the kind of quality that makes each bag worth opening."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.product_grid.settings.collection.label",
+      "info": "t:sections.product_grid.settings.collection.info"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "t:sections.product_grid.settings.limit.label",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.product_grid.name"
+    }
+  ]
+}
+{% endschema %}

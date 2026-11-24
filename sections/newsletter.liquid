@@ -1,0 +1,84 @@
+<section class="newsletter">
+  <p class="newsletter__heading">{{ section.settings.heading }}</p>
+  <p class="newsletter__text">{{ section.settings.text }}</p>
+
+  {%- form 'customer', class: 'newsletter__form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <label class="visually-hidden" for="newsletter-email-{{ section.id }}">{{ 'newsletter.email_label' | t }}</label>
+    <input
+      id="newsletter-email-{{ section.id }}"
+      class="newsletter__input"
+      type="email"
+      name="contact[email]"
+      placeholder="{{ 'newsletter.placeholder' | t }}"
+      autocomplete="email"
+      required
+    >
+    <button class="newsletter__button" type="submit">{{ section.settings.button_label }}</button>
+    {%- if form.posted_successfully? -%}
+      <p class="newsletter__message" role="status">{{ 'newsletter.success' | t }}</p>
+    {%- endif -%}
+    {%- if form.errors -%}
+      <p class="newsletter__message" role="alert">{{ form.errors | default_errors }}</p>
+    {%- endif -%}
+  {%- endform -%}
+</section>
+
+{% stylesheet %}
+  .newsletter { margin-block: 5rem; padding: 3rem 0.5rem; border-top: 1px solid #dfc2ae; text-align: center; }
+  .newsletter__heading { max-width: 42rem; margin: 1rem auto 0; font-size: 1.875rem; line-height: 1.25; font-weight: 600; color: var(--color-primary); }
+  .newsletter__text { max-width: 42rem; margin: 1rem auto 0; font-size: 0.875rem; line-height: 1.75rem; color: var(--color-text); }
+  .newsletter__form { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 48rem; margin: 2rem auto 0; }
+  .newsletter__input {
+    width: 100%; padding: 1rem 1.25rem; border: 1px solid #dec1ad; border-radius: var(--radius-pill);
+    background: rgb(255 255 255 / 0.85); color: var(--color-heading); outline: none;
+  }
+  .newsletter__input::placeholder { color: #9a8374; }
+  .newsletter__input:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  .newsletter__button {
+    padding: 1rem 2rem; border-radius: 1rem; background: var(--color-primary); color: #fff;
+    font-size: 0.75rem; line-height: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em;
+    transition: background-color var(--duration-base);
+  }
+  .newsletter__button:hover { background: var(--color-primary-hover); }
+  .newsletter__message { color: var(--color-text); font-size: 0.875rem; }
+  @media (min-width: 640px) {
+    .newsletter { padding-inline: 1.5rem; }
+    .newsletter__heading { font-size: 2.25rem; line-height: 2.5rem; }
+    .newsletter__text { font-size: 1rem; }
+    .newsletter__form { flex-direction: row; align-items: center; flex-wrap: wrap; }
+    .newsletter__input { flex: 1; width: auto; }
+  }
+  @media (min-width: 768px) { .newsletter { padding-block: 4rem; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.newsletter.name",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "t:sections.newsletter.settings.heading.label",
+      "default": "Subscribe for fresh drops, exclusive offers, and coffee notes worth opening."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:sections.newsletter.settings.text.label",
+      "default": "Join the Brewphoria list for new arrivals, limited releases, special bundles, and thoughtful updates that keep your coffee ritual inspired."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.newsletter.settings.button_label.label",
+      "default": "SUBSCRIBE"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.newsletter.name"
+    }
+  ]
+}
+{% endschema %}

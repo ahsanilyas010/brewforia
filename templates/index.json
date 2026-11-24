@@ -1,9 +1,35 @@
 {
   "sections": {
-    "intro": {
-      "type": "rich-text",
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "image_alt": "Brewphoria",
+        "button_label": "Shop Now"
+      }
+    },
+    "latest": {
+      "type": "product-grid",
+      "settings": {
+        "title_first": "What's",
+        "title_second": "NEW",
+        "collection": "all",
+        "limit": 10
+      }
+    },
+    "best_sellers": {
+      "type": "product-grid",
+      "settings": {
+        "title_first": "BEST",
+        "title_second": "SELLER",
+        "description": "Brewphoria favorites that keep finding their way back into carts, cups, and daily rituals.",
+        "collection": "best-sellers",
+        "limit": 5
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
       "settings": {}
     }
   },
-  "order": ["intro"]
+  "order": ["hero", "latest", "best_sellers", "newsletter"]
 }

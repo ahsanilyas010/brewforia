@@ -1,24 +1,129 @@
-{%- assign current_year = 'now' | date: '%Y' -%}
-<footer class="site-footer">
-  <nav aria-label="{{ 'general.footer_navigation' | t }}">
-    <ul>
-      {%- for link in section.settings.menu.links -%}
-        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-      {%- endfor -%}
-    </ul>
-  </nav>
-  <p>{{ 'general.copyright' | t: year: current_year, shop: shop.name }}</p>
+{%- liquid
+  assign brand = settings.brand_name | default: shop.name
+  assign logo_alt = 'header.logo_alt' | t: brand: brand
+  assign current_year = 'now' | date: '%Y'
+  assign extra_items = section.settings.extra_items | newline_to_br | strip_newlines | split: '<br />'
+-%}
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__about">
+      <a class="footer__logo" href="{{ routes.root_url }}">
+        {%- if settings.logo != blank -%}
+          {{ settings.logo | image_url: width: 320 | image_tag: widths: '160, 240, 320', sizes: '(min-width: 640px) 160px, 128px', alt: logo_alt, loading: 'lazy', class: 'footer__logo-image' }}
+        {%- else -%}
+          <img class="footer__logo-image" src="{{ 'logo.jpg' | asset_url }}" alt="{{ logo_alt }}" width="1080" height="607" loading="lazy">
+        {%- endif -%}
+      </a>
+      <p class="footer__blurb">{{ section.settings.blurb }}</p>
+    </div>
+
+    <div>
+      <h3 class="footer__heading">{{ section.settings.company_heading }}</h3>
+      <ul class="footer__list">
+        {%- for link in section.settings.menu.links -%}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {%- endfor -%}
+        {%- for item in extra_items -%}
+          {%- if item != blank -%}
+            <li><span>{{ item }}</span></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="footer__heading">{{ section.settings.contact_heading }}</h3>
+      <ul class="footer__list">
+        {%- if section.settings.phone != blank -%}
+          <li><a href="tel:{{ section.settings.phone | remove: ' ' | remove: '-' }}">{{ section.settings.phone }}</a></li>
+        {%- endif -%}
+        {%- if section.settings.email != blank -%}
+          <li><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></li>
+        {%- endif -%}
+        {%- if settings.social_instagram != blank -%}
+          <li><a href="{{ settings.social_instagram }}" target="_blank" rel="noopener noreferrer">{{ 'footer.instagram' | t }}</a></li>
+        {%- endif -%}
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__legal">
+    <p>{{ 'footer.copyright' | t: year: current_year, brand: brand }}</p>
+  </div>
 </footer>
+
+{% stylesheet %}
+  .footer { margin-top: 8rem; color: #374151; }
+  .footer__grid { display: grid; grid-template-columns: 1fr; gap: 3rem; padding-top: 1rem; text-align: left; }
+  .footer__about { max-width: 36rem; }
+  .footer__logo { display: inline-flex; }
+  .footer__logo-image { width: 8rem; height: auto; border-radius: var(--radius-xl); }
+  .footer__blurb { margin-top: 2rem; max-width: 28rem; font-size: 1.125rem; line-height: 2.5rem; color: var(--color-slate-text); }
+  .footer__heading { font-size: 1.875rem; line-height: 1.2; font-weight: 600; text-transform: uppercase; letter-spacing: -0.025em; color: #000; }
+  .footer__list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; font-size: 1.125rem; line-height: 1.75rem; color: var(--color-slate-text); }
+  .footer__list a { transition: color var(--duration-base); }
+  .footer__list a:hover { color: #000; }
+  .footer__legal { margin-top: 3rem; border-top: 1px solid var(--color-gray-200); }
+  .footer__legal p { padding-block: 1.25rem; text-align: center; font-size: 0.875rem; line-height: 1.25rem; color: var(--color-slate-copyright); }
+
+  @media (min-width: 640px) {
+    .footer__logo-image { width: 10rem; }
+    .footer__blurb { font-size: 15px; line-height: 2.25rem; }
+    .footer__heading { font-size: 26px; }
+    .footer__list { font-size: 15px; }
+  }
+  @media (min-width: 768px) {
+    .footer__grid { grid-template-columns: 1.8fr 1fr 1fr; gap: 5rem; }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
   "name": "t:sections.footer.name",
   "settings": [
     {
+      "type": "textarea",
+      "id": "blurb",
+      "label": "t:sections.footer.settings.blurb.label",
+      "default": "Brewphoria brings together bold roasts, smooth blends, and a coffee ritual built for slow mornings and long conversations. Every cup is crafted to feel familiar, comforting, and worth coming back to."
+    },
+    {
+      "type": "text",
+      "id": "company_heading",
+      "label": "t:sections.footer.settings.company_heading.label",
+      "default": "COMPANY"
+    },
+    {
       "type": "link_list",
       "id": "menu",
       "label": "t:sections.footer.settings.menu.label",
       "default": "footer"
+    },
+    {
+      "type": "textarea",
+      "id": "extra_items",
+      "label": "t:sections.footer.settings.extra_items.label",
+      "info": "t:sections.footer.settings.extra_items.info",
+      "default": "Delivery\nPrivacy policy"
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "t:sections.footer.settings.contact_heading.label",
+      "default": "GET IN TOUCH"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "t:sections.footer.settings.phone.label",
+      "default": "+1-000-000-0000"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "t:sections.footer.settings.email.label",
+      "default": "hello@brewphoria.com"
     }
   ]
 }
