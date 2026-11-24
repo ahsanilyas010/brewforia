@@ -1,0 +1,26 @@
+/* Phase 2 scaffold stylesheet. Tokens and components arrive in Phase 3. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+}
+
+.skip-link:focus {
+  left: 0;
+  z-index: 100;
+}

@@ -1,0 +1,25 @@
+{%- assign current_year = 'now' | date: '%Y' -%}
+<footer class="site-footer">
+  <nav aria-label="{{ 'general.footer_navigation' | t }}">
+    <ul>
+      {%- for link in section.settings.menu.links -%}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+  <p>{{ 'general.copyright' | t: year: current_year, shop: shop.name }}</p>
+</footer>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.footer.settings.menu.label",
+      "default": "footer"
+    }
+  ]
+}
+{% endschema %}

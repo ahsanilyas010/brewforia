@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "intro": {
+      "type": "rich-text",
+      "settings": {}
+    }
+  },
+  "order": ["intro"]
+}

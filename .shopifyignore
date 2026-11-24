@@ -1,0 +1,8 @@
+# Files excluded from Shopify CLI operations (push, pull, dev).
+docs/
+scripts/
+README.md
+.github/
+.theme-check.yml
+.gitignore
+.gitattributes

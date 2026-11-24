@@ -1,0 +1,42 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<div class="product" data-product-id="{{ product.id }}">
+  <div class="product__media">
+    {%- for media in product.media -%}
+      {%- if media.media_type == 'image' -%}
+        {{ media | image_url: width: 1200 | image_tag: widths: '400, 600, 900, 1200', sizes: '(min-width: 768px) 50vw, 100vw', loading: 'lazy', alt: media.alt | default: product.title }}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="product__info">
+    <h1>{{ product.title }}</h1>
+    <p class="product__price">{{ current_variant.price | money }}</p>
+    <div class="product__description">{{ product.description }}</div>
+
+    {%- form 'product', product -%}
+      <label for="variant-{{ section.id }}">{{ 'products.select_option' | t }}</label>
+      <select id="variant-{{ section.id }}" name="id">
+        {%- for variant in product.variants -%}
+          <option value="{{ variant.id }}"{% if variant == current_variant %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>
+            {{- variant.title }} - {{ variant.price | money -}}
+          </option>
+        {%- endfor -%}
+      </select>
+      <button type="submit"{% unless current_variant.available %} disabled{% endunless %}>
+        {%- if current_variant.available -%}
+          {{ 'products.add_to_cart' | t }}
+        {%- else -%}
+          {{ 'products.sold_out' | t }}
+        {%- endif -%}
+      </button>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main_product.name",
+  "settings": []
+}
+{% endschema %}

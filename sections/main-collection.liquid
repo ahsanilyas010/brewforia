@@ -1,0 +1,21 @@
+<div class="collection">
+  <h1>{{ collection.title }}</h1>
+
+  {%- paginate collection.products by 12 -%}
+    <ul class="collection__grid">
+      {%- for product in collection.products -%}
+        <li>{% render 'product-card', product: product %}</li>
+      {%- else -%}
+        <li>{{ 'collections.no_products' | t }}</li>
+      {%- endfor -%}
+    </ul>
+    {% render 'pagination', paginate: paginate %}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main_collection.name",
+  "settings": []
+}
+{% endschema %}

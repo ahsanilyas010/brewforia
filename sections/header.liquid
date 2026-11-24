@@ -1,0 +1,33 @@
+<header class="site-header">
+  <a class="site-header__logo" href="{{ routes.root_url }}">{{ shop.name }}</a>
+
+  <nav aria-label="{{ 'general.main_navigation' | t }}">
+    <ul class="site-header__menu">
+      {%- for link in section.settings.menu.links -%}
+        <li><a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+
+  <div class="site-header__actions">
+    <a href="{{ routes.search_url }}">{{ 'general.search' | t }}</a>
+    {%- if shop.customer_accounts_enabled -%}
+      <a href="{{ routes.account_url }}">{{ 'general.account' | t }}</a>
+    {%- endif -%}
+    <a href="{{ routes.cart_url }}">{{ 'general.cart' | t }} ({{ cart.item_count }})</a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.header.settings.menu.label",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

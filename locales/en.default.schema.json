@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "header": {
+      "name": "Header",
+      "settings": { "menu": { "label": "Menu" } }
+    },
+    "footer": {
+      "name": "Footer",
+      "settings": { "menu": { "label": "Menu" } }
+    },
+    "rich_text": {
+      "name": "Rich text",
+      "settings": {
+        "heading": { "label": "Heading" },
+        "text": { "label": "Text" }
+      }
+    },
+    "main_page": { "name": "Page" },
+    "main_404": { "name": "Not found" },
+    "main_collection": { "name": "Collection" },
+    "main_list_collections": { "name": "Collections list" },
+    "main_product": { "name": "Product" },
+    "main_cart": { "name": "Cart" },
+    "main_search": { "name": "Search" },
+    "main_password": { "name": "Password" }
+  }
+}
