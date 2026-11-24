@@ -46,3 +46,10 @@ Login, sign-up, order history, order placing, cart server sync, admin dashboard,
 | 15 | Default menus `main-menu` and `footer` exist. Editing them overwrites store data. | Create new menus instead (needs your OK before any write). |
 | 16 | Theme upload route. `themeCreate` from a GitHub zip fails ("Src is empty", GitHub nests files in a folder). | Ask Ahsan to connect the repo through Shopify's GitHub integration (steps in README). |
 | 17 | EasyPaisa appears in the source UI but is not implemented in the backend. | Not ported. Needs a payment provider decision. |
+
+## Status update (Phase 7 to 9)
+
+- Q16 (theme upload): resolved. Ahsan connected the repo through Shopify's GitHub integration, which created the unpublished theme. Later pushes were not pulled into the theme reliably, so edits were applied through the connector.
+- Products set to Active and collections published at Ahsan's request. Draft-only verification no longer applies.
+- Contact tel: and mailto: values live in `templates/page.contact.json` because `url` settings cannot default to them.
+- Still open: Q1 contact details, Q2 Instagram URL, Q3 policy pages, Q9 shipping and COD, Q10 trial plan, Q11 money format, Q17 EasyPaisa.

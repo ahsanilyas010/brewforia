@@ -65,3 +65,7 @@ Written to the connected store with Ahsan's approval of `scripts/catalog.json`:
 - Draft products are invisible to customers and to collection pages in the theme preview. Seeing real products in the preview needs them set to Active (Ahsan's call).
 
 Re-running: match on `handle` (and `custom.source_id`) so a second run updates instead of duplicating.
+
+## Update: activation (2026-11-24)
+
+At Ahsan's request the 8 products were set to **Active** and published to the Online Store, the 7 collections were published to the Online Store, and the About page was created (a Contact page already existed). The earlier statement that products stay `DRAFT` no longer applies.

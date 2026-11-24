@@ -4,8 +4,7 @@ A custom Online Store 2.0 theme that rebuilds the Brewphoria storefront
 (source: `UsmmmanT/Brewphoria`, reference only) on Shopify. Shopify replaces the
 original Node API, so the theme only contains Liquid, CSS and vanilla JavaScript.
 
-Status: **v0.1.0, Phase 2 scaffold.** Design tokens, real sections and catalog migration land in later phases.
-See `docs/` for the audit, design tokens, product model and page map.
+Status: **v0.1.0.** All source pages are rebuilt. See `docs/` for the audit, design tokens, product model, page map, visual diff, QA report and handover notes.
 
 ## Structure
 
@@ -48,4 +47,17 @@ Using the Shopify CLI (needs a login to the store):
 shopify theme push --unpublished --theme "Brewforia Custom v0.1" --store <store>.myshopify.com
 ```
 
-Connecting the repo through Shopify's GitHub integration is covered in the handover notes (Phase 9).
+### Connect through Shopify's GitHub integration
+
+1. Shopify admin, Online Store, Themes, Add theme, Connect from GitHub.
+2. Pick `ahsanilyas010/brewforia` and the branch you want. Shopify creates an **unpublished** theme.
+3. Theme folders sit at the repo root and `.shopifyignore` keeps `docs/` and `scripts/` out of CLI operations.
+4. Theme editor changes are committed back to the branch by `shopify[bot]`. Merge them (`git pull`) before you push.
+
+## Tests
+
+```bash
+cd scripts && npm install jsdom && node test-theme-js.mjs
+```
+
+Runs the behaviour tests for `assets/theme.js` (cart, product form, filters, menu) with jsdom and a mocked `fetch`.
