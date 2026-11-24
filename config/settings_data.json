@@ -1,1 +1,19 @@
-{ "current": {} }
+{
+  "current": {
+    "color_primary": "#2f1d14",
+    "color_primary_hover": "#493024",
+    "color_heading": "#3f2b21",
+    "color_text": "#6b5648",
+    "color_accent": "#8a4f30",
+    "color_eyebrow": "#a8673f",
+    "color_badge": "#d37b46",
+    "color_border": "#ead0bf",
+    "color_input_border": "#d8b8a4",
+    "color_surface": "#ead9cd",
+    "color_header_start": "#b89b7a",
+    "color_header_end": "#7a5a3a",
+    "color_header_border": "#b08a6a",
+    "logo_width": 160,
+    "social_instagram": ""
+  }
+}

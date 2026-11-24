@@ -1,0 +1,123 @@
+{%- liquid
+  assign color_tokens = '--color-primary,--color-primary-hover,--color-heading,--color-text,--color-accent,--color-eyebrow,--color-badge,--color-border,--color-input-border,--color-surface,--color-header-start,--color-header-end,--color-header-border,--color-page-bg,--color-gray-300,--color-gray-500,--color-gray-700,--color-neutral-900,--color-yellow-100,--color-yellow-400' | split: ','
+  assign icon_names = 'search,account,cart,menu,back,close,chevron-down,bin' | split: ','
+  assign radius_tokens = '--radius-pill,--radius-card,--radius-panel,--radius-nav,--radius-feature' | split: ','
+  assign shadow_tokens = '--shadow-nav,--shadow-dropdown,--shadow-filter,--shadow-total,--shadow-about-image,--shadow-feature,--shadow-contact,--shadow-button' | split: ','
+  assign font_sizes = '12,14,16,18,24,30,36' | split: ','
+  assign label_primary = 'styleguide.primary' | t
+  assign label_secondary = 'styleguide.secondary' | t
+  assign label_cart = 'general.cart' | t
+  assign label_search = 'general.search' | t
+  assign label_email = 'styleguide.input_label' | t
+  assign label_placeholder = 'styleguide.input_placeholder' | t
+-%}
+
+<div class="style-guide page-width">
+  <section class="style-guide__block">
+    <h2 class="style-guide__heading">{{ 'styleguide.colors' | t }}</h2>
+    <ul class="style-guide__swatches">
+      {%- for token in color_tokens -%}
+        <li>
+          <span class="style-guide__swatch" style="background: var({{ token }})"></span>
+          <code>{{ token }}</code>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </section>
+
+  <section class="style-guide__block">
+    <h2 class="style-guide__heading">{{ 'styleguide.type' | t }}</h2>
+    {%- for size in font_sizes -%}
+      <p style="font-size: {{ size }}px">{{ size }}px &middot; {{ 'styleguide.sample_text' | t }}</p>
+    {%- endfor -%}
+    <p style="font-weight: 500">500 &middot; {{ 'styleguide.sample_text' | t }}</p>
+    <p style="font-weight: 600">600 &middot; {{ 'styleguide.sample_text' | t }}</p>
+    <p style="font-weight: 700">700 &middot; {{ 'styleguide.sample_text' | t }}</p>
+  </section>
+
+  <section class="style-guide__block">
+    <h2 class="style-guide__heading">{{ 'styleguide.buttons' | t }}</h2>
+    <div class="style-guide__row">
+      {% render 'button', text: label_primary, url: routes.root_url %}
+      {% render 'button', text: label_cart, style: 'add-to-cart', type: 'button' %}
+      {% render 'button', text: label_primary, style: 'add-to-cart', type: 'button', disabled: true %}
+      {% render 'button', text: label_secondary, style: 'secondary', url: routes.root_url %}
+      <span class="icon-button">{% render 'icon', name: 'search', alt: label_search %}</span>
+      <span class="icon-button icon-button--dark">
+        {% render 'icon', name: 'cart', alt: label_cart %}
+        {% render 'badge', count: cart.item_count %}
+      </span>
+    </div>
+  </section>
+
+  <section class="style-guide__block">
+    <h2 class="style-guide__heading">{{ 'styleguide.inputs' | t }}</h2>
+    <div class="style-guide__row style-guide__row--narrow">
+      {% render 'input', id: 'sg-email', name: 'sg_email', label: label_email, type: 'email', placeholder: label_placeholder %}
+    </div>
+  </section>
+
+  <section class="style-guide__block">
+    <h2 class="style-guide__heading">{{ 'styleguide.badge' | t }}</h2>
+    {% render 'section-title', text1: 'BEST', text2: 'SELLER' %}
+  </section>
+
+  <section class="style-guide__block">
+    <h2 class="style-guide__heading">{{ 'styleguide.cards' | t }}</h2>
+    <div class="style-guide__row">
+      {%- if section.settings.product != blank -%}
+        <div class="style-guide__card">{% render 'product-card', product: section.settings.product %}</div>
+      {%- endif -%}
+      {% render 'price', price: 80000, from: true %}
+      {% render 'price', price: 125000 %}
+    </div>
+  </section>
+
+  <section class="style-guide__block">
+    <h2 class="style-guide__heading">{{ 'styleguide.icons' | t }}</h2>
+    <ul class="style-guide__row">
+      {%- for name in icon_names -%}
+        <li class="style-guide__icon">{% render 'icon', name: name %}<code>{{ name }}</code></li>
+      {%- endfor -%}
+    </ul>
+  </section>
+
+  <section class="style-guide__block">
+    <h2 class="style-guide__heading">{{ 'styleguide.radii_shadows' | t }}</h2>
+    <ul class="style-guide__row">
+      {%- for token in radius_tokens -%}
+        <li class="style-guide__sample" style="border-radius: var({{ token }}); border: 1px solid var(--color-border)"><code>{{ token }}</code></li>
+      {%- endfor -%}
+      {%- for token in shadow_tokens -%}
+        <li class="style-guide__sample" style="box-shadow: var({{ token }}); background: #fff"><code>{{ token }}</code></li>
+      {%- endfor -%}
+    </ul>
+  </section>
+</div>
+
+{% stylesheet %}
+  .style-guide { padding-block: 2rem; }
+  .style-guide__block { margin-bottom: 3rem; }
+  .style-guide__heading { margin-bottom: 1rem; font-size: 1.5rem; font-weight: 600; color: var(--color-heading); }
+  .style-guide__swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 1rem; }
+  .style-guide__swatch { display: block; height: 3.5rem; border: 1px solid var(--color-border); border-radius: 0.5rem; }
+  .style-guide__row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+  .style-guide__row--narrow { max-width: 28rem; }
+  .style-guide__card { width: 14rem; }
+  .style-guide__icon { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+  .style-guide__sample { display: flex; align-items: center; justify-content: center; width: 11rem; height: 6rem; padding: 0.5rem; text-align: center; }
+  .style-guide code { font-size: 0.75rem; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.style_guide.name",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:sections.style_guide.settings.product.label"
+    }
+  ]
+}
+{% endschema %}

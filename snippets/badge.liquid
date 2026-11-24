@@ -1,0 +1,10 @@
+{% doc %}
+  Renders the round count badge used on the cart icon.
+
+  @param {number} count - Number to show
+
+  @example
+  {% render 'badge', count: cart.item_count %}
+{% enddoc %}
+
+<span class="badge">{{ count }}</span>

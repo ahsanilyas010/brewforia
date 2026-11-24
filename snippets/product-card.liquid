@@ -1,5 +1,5 @@
 {% doc %}
-  Renders a product card: image, title and lowest price.
+  Renders a product card: image, title and lowest price (source: ProductItem.jsx).
 
   @param {object} product - The product to render
   @param {string} [class] - Extra CSS class for the card
@@ -8,17 +8,14 @@
   {% render 'product-card', product: product %}
 {% enddoc %}
 
-{%- assign min_price = product.price_min | money -%}
 <a class="product-card {{ class }}" href="{{ product.url }}">
-  {%- if product.featured_image -%}
-    {{ product.featured_image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '(min-width: 1024px) 25vw, 50vw', loading: 'lazy', alt: product.featured_image.alt | default: product.title }}
-  {%- endif -%}
-  <span class="product-card__title">{{ product.title }}</span>
-  <span class="product-card__price">
-    {%- if product.price_varies -%}
-      {{ 'products.from_price' | t: price: min_price }}
-    {%- else -%}
-      {{ product.price | money }}
+  <div class="product-card__media">
+    {%- if product.featured_image -%}
+      {{ product.featured_image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, 50vw', loading: 'lazy', alt: product.featured_image.alt | default: product.title }}
     {%- endif -%}
-  </span>
+  </div>
+  <div class="product-card__body">
+    <span class="product-card__title">{{ product.title }}</span>
+    {% render 'price', price: product.price_min, from: true %}
+  </div>
 </a>

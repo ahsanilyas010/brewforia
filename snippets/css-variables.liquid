@@ -1,0 +1,26 @@
+{% doc %}
+  Outputs the brand color settings as CSS custom properties.
+  Fixed tokens (fonts, radii, shadows) live in assets/base.css.
+
+  @example
+  {% render 'css-variables' %}
+{% enddoc %}
+
+{% style %}
+  :root {
+    --color-primary: {{ settings.color_primary }};
+    --color-primary-hover: {{ settings.color_primary_hover }};
+    --color-heading: {{ settings.color_heading }};
+    --color-text: {{ settings.color_text }};
+    --color-accent: {{ settings.color_accent }};
+    --color-eyebrow: {{ settings.color_eyebrow }};
+    --color-badge: {{ settings.color_badge }};
+    --color-border: {{ settings.color_border }};
+    --color-input-border: {{ settings.color_input_border }};
+    --color-surface: {{ settings.color_surface }};
+    --color-header-start: {{ settings.color_header_start }};
+    --color-header-end: {{ settings.color_header_end }};
+    --color-header-border: {{ settings.color_header_border }};
+    --logo-width: {{ settings.logo_width }}px;
+  }
+{% endstyle %}

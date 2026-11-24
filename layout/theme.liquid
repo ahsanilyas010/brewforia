@@ -2,6 +2,7 @@
 <html lang="{{ request.locale.iso_code }}">
   <head>
     {% render 'meta-tags' %}
+    {% render 'css-variables' %}
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ content_for_header }}
   </head>

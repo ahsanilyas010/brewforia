@@ -1,0 +1,19 @@
+{% doc %}
+  Renders a formatted price. The source always shows a "From" prefix on cards.
+
+  @param {number} price - Price in the smallest currency unit
+  @param {boolean} [from] - Prefix with "From"
+  @param {string} [class] - Extra CSS class
+
+  @example
+  {% render 'price', price: product.price_min, from: true %}
+{% enddoc %}
+
+{%- assign formatted_price = price | money_without_trailing_zeros -%}
+<span class="price {{ class }}">
+  {%- if from -%}
+    {{ 'products.from_price' | t: price: formatted_price }}
+  {%- else -%}
+    {{ formatted_price }}
+  {%- endif -%}
+</span>

@@ -6,5 +6,124 @@
     "theme_author": "Brewforia",
     "theme_documentation_url": "https://github.com/ahsanilyas010/brewforia",
     "theme_support_url": "https://github.com/ahsanilyas010/brewforia/issues"
+  },
+  {
+    "name": "t:settings_schema.colors.name",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "t:settings_schema.colors.color_primary.label",
+        "default": "#2f1d14"
+      },
+      {
+        "type": "color",
+        "id": "color_primary_hover",
+        "label": "t:settings_schema.colors.color_primary_hover.label",
+        "default": "#493024"
+      },
+      {
+        "type": "color",
+        "id": "color_heading",
+        "label": "t:settings_schema.colors.color_heading.label",
+        "default": "#3f2b21"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "t:settings_schema.colors.color_text.label",
+        "default": "#6b5648"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "t:settings_schema.colors.color_accent.label",
+        "default": "#8a4f30"
+      },
+      {
+        "type": "color",
+        "id": "color_eyebrow",
+        "label": "t:settings_schema.colors.color_eyebrow.label",
+        "default": "#a8673f"
+      },
+      {
+        "type": "color",
+        "id": "color_badge",
+        "label": "t:settings_schema.colors.color_badge.label",
+        "default": "#d37b46"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "t:settings_schema.colors.color_border.label",
+        "default": "#ead0bf"
+      },
+      {
+        "type": "color",
+        "id": "color_input_border",
+        "label": "t:settings_schema.colors.color_input_border.label",
+        "default": "#d8b8a4"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "t:settings_schema.colors.color_surface.label",
+        "default": "#ead9cd"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.header.name",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_header_start",
+        "label": "t:settings_schema.colors.color_header_start.label",
+        "default": "#b89b7a"
+      },
+      {
+        "type": "color",
+        "id": "color_header_end",
+        "label": "t:settings_schema.colors.color_header_end.label",
+        "default": "#7a5a3a"
+      },
+      {
+        "type": "color",
+        "id": "color_header_border",
+        "label": "t:settings_schema.colors.color_header_border.label",
+        "default": "#b08a6a"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.logo.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "t:settings_schema.logo.logo.label",
+        "info": "t:settings_schema.logo.logo.info"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "t:settings_schema.logo.logo_width.label",
+        "min": 80,
+        "max": 240,
+        "step": 8,
+        "unit": "px",
+        "default": 160
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.social.name",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "t:settings_schema.social.instagram.label"
+      }
+    ]
   }
 ]

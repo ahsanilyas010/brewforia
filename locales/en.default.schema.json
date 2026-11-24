@@ -2,26 +2,125 @@
   "sections": {
     "header": {
       "name": "Header",
-      "settings": { "menu": { "label": "Menu" } }
+      "settings": {
+        "menu": {
+          "label": "Menu"
+        }
+      }
     },
     "footer": {
       "name": "Footer",
-      "settings": { "menu": { "label": "Menu" } }
+      "settings": {
+        "menu": {
+          "label": "Menu"
+        }
+      }
     },
     "rich_text": {
       "name": "Rich text",
       "settings": {
-        "heading": { "label": "Heading" },
-        "text": { "label": "Text" }
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        }
       }
     },
-    "main_page": { "name": "Page" },
-    "main_404": { "name": "Not found" },
-    "main_collection": { "name": "Collection" },
-    "main_list_collections": { "name": "Collections list" },
-    "main_product": { "name": "Product" },
-    "main_cart": { "name": "Cart" },
-    "main_search": { "name": "Search" },
-    "main_password": { "name": "Password" }
+    "main_page": {
+      "name": "Page"
+    },
+    "main_404": {
+      "name": "Not found"
+    },
+    "main_collection": {
+      "name": "Collection"
+    },
+    "main_list_collections": {
+      "name": "Collections list"
+    },
+    "main_product": {
+      "name": "Product"
+    },
+    "main_cart": {
+      "name": "Cart"
+    },
+    "main_search": {
+      "name": "Search"
+    },
+    "main_password": {
+      "name": "Password"
+    },
+    "style_guide": {
+      "name": "Style guide",
+      "settings": {
+        "product": {
+          "label": "Sample product"
+        }
+      }
+    }
+  },
+  "settings_schema": {
+    "colors": {
+      "name": "Colors",
+      "color_primary": {
+        "label": "Primary (buttons, active nav, cart button)"
+      },
+      "color_primary_hover": {
+        "label": "Primary hover"
+      },
+      "color_heading": {
+        "label": "Heading and product name text"
+      },
+      "color_text": {
+        "label": "Body text"
+      },
+      "color_accent": {
+        "label": "Price and accent text"
+      },
+      "color_eyebrow": {
+        "label": "Eyebrow labels"
+      },
+      "color_badge": {
+        "label": "Cart count badge"
+      },
+      "color_border": {
+        "label": "Icon button and card borders"
+      },
+      "color_input_border": {
+        "label": "Input borders"
+      },
+      "color_surface": {
+        "label": "Image placeholder surface"
+      },
+      "color_header_start": {
+        "label": "Header gradient start"
+      },
+      "color_header_end": {
+        "label": "Header gradient end"
+      },
+      "color_header_border": {
+        "label": "Header border"
+      }
+    },
+    "header": {
+      "name": "Header"
+    },
+    "logo": {
+      "name": "Logo",
+      "logo": {
+        "label": "Logo image",
+        "info": "Leave empty to use the Brewphoria logo shipped with the theme."
+      },
+      "logo_width": {
+        "label": "Logo width"
+      }
+    },
+    "social": {
+      "name": "Social links",
+      "instagram": {
+        "label": "Instagram URL"
+      }
+    }
   }
 }

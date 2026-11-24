@@ -49,5 +49,20 @@
   },
   "gift_card": {
     "title": "Gift card"
+  },
+  "styleguide": {
+    "colors": "Colors",
+    "type": "Typography",
+    "buttons": "Buttons",
+    "inputs": "Inputs",
+    "cards": "Product card and price",
+    "icons": "Icons",
+    "radii_shadows": "Radii and shadows",
+    "badge": "Badge and title",
+    "sample_text": "The quick brown fox jumps over the lazy dog",
+    "primary": "Shop now",
+    "secondary": "Email team",
+    "input_label": "Email address",
+    "input_placeholder": "Enter your email address"
   }
 }
