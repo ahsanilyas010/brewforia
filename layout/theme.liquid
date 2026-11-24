@@ -11,12 +11,16 @@
   <body class="template-{{ request.page_type | handleize }}">
     <a class="skip-link" href="#main">{{ 'general.skip_to_content' | t }}</a>
 
-    {% sections 'header-group' %}
+    <div class="page-width">
+      {% sections 'header-group' %}
+    </div>
 
     <main id="main" class="page-width" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
-    {% sections 'footer-group' %}
+    <div class="page-width">
+      {% sections 'footer-group' %}
+    </div>
   </body>
 </html>
