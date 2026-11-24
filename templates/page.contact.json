@@ -12,9 +12,9 @@
     "main": {
       "type": "contact-panels",
       "blocks": {
-        "phone": { "type": "tile", "settings": { "label": "Phone", "value": "+92 330 865 3077", "description": "Call for order support and urgent help.", "url": "tel:+923308653077", "cta": "Call now" } },
+        "phone": { "type": "tile", "settings": { "label": "Phone", "value": "+92 300 0000000", "description": "Call for order support and urgent help.", "url": "tel:+923000000000", "cta": "Call now" } },
         "email": { "type": "tile", "settings": { "label": "Email", "value": "utanveer485@gmail.com", "description": "Best for detailed questions and business requests.", "url": "mailto:utanveer485@gmail.com", "cta": "Send email" } },
-        "location": { "type": "tile", "settings": { "label": "Location", "value": "Karachi, Pakistan", "description": "Serving customers across Pakistan with trusted shipping partners." } },
+        "location": { "type": "tile", "settings": { "label": "Location", "value": "Islamabad, Pakistan", "description": "Serving customers across Pakistan with trusted shipping partners." } },
         "hours": { "type": "tile", "settings": { "label": "Support Hours", "value": "Mon - Sat, 10AM to 8PM", "description": "Responses are typically shared within a few hours." } },
         "c1": { "type": "chip", "settings": { "text": "Order support" } },
         "c2": { "type": "chip", "settings": { "text": "Delivery updates" } },
@@ -22,7 +22,7 @@
       },
       "block_order": ["phone", "email", "location", "hours", "c1", "c2", "c3"],
       "settings": {
-        "call_url": "tel:+923308653077",
+        "call_url": "tel:+923000000000",
         "email_url": "mailto:utanveer485@gmail.com"
       }
     }

@@ -36,7 +36,7 @@ Login and sign-up, order history, order placement, cart server sync, the Admin d
 | Money format | Settings, General, Currency formatting, if you want `Rs.1250` style. The theme uses Shopify's format. |
 | Policies | Create Delivery and Privacy policy pages. The footer shows both as plain text for now (same as the source). |
 | Customer accounts | Turn on customer accounts so the header account menu appears. |
-| Contact details | The Contact page uses the source's a dummy number `+92 300 0000000`, `utanveer485@gmail.com`, Islamabad. The footer uses the same dummy number and the source placeholder `hello@brewphoria.com`. Replace in the theme editor (open question 1). |
+| Contact details | The Contact page uses a dummy number `+92 300 0000000`, `utanveer485@gmail.com`, Islamabad. The footer uses the same dummy number and the source placeholder `hello@brewphoria.com`. Replace in the theme editor (open question 1). |
 | Instagram | Paste the real profile URL in theme settings, Social links. The footer link is hidden until then. |
 | Inventory | Products have no stock or SKU data in the source. Inventory tracking is off, so they can always be bought. Set quantities if you want stock control. |
 | Home page collection | Shopify added the first product to the store's own "Home page" collection. Remove it there if unwanted. |
