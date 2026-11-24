@@ -30,7 +30,7 @@ Filter UI in the source hard codes six categories. Live data uses three of them.
 |---|---|---|---|
 | Coffee | 4 | Coffee | `coffee` |
 | Hot Chocolate | 0 | Hot Chocolate | `hot-chocolate` |
-| Matcha & Friends | 0 | Matcha & Friends | `matcha-and-friends` |
+| Matcha & Friends | 0 | Matcha & Friends | `matcha-friends` |
 | Chocolate | 2 | Chocolate | `chocolate` |
 | Munchables | 2 | Munchables | `munchables` |
 | Spreads | 0 | Spreads | `spreads` |
@@ -46,3 +46,9 @@ Only one needed: `custom.source_id` (above). No other source field lacks a Shopi
 ## Cart, order, user models
 
 - `orderModel` (userId, items, amount, address, status, paymentMethod, payment, date) and `userModel` (name, email, password, cartData): replaced by Shopify orders and customers. Not migrated (hard rule: no customers or orders).
+
+## Store state checked on 2026-11-24 (read only)
+
+- Products: 0. Collections: 1 (`frontpage`, "Home page"). Menus: `main-menu`, `footer`, `customer-account-main-menu`.
+- No handle collisions with `scripts/catalog.json`.
+- Plan: create **new** menus `brewphoria-main` and `brewphoria-footer` rather than editing the default ones (editing would overwrite store data, which needs Ahsan's approval). The theme's header and footer menu settings then point at the new menus.

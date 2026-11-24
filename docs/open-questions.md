@@ -34,3 +34,15 @@ Login, sign-up, order history, order placing, cart server sync, admin dashboard,
 ## Reference screenshot caveats
 
 `cart`, `placeorder` and `orders` captures show empty or logged-out states (no session, empty cart). Matching them to Shopify's cart page is done against the empty state and a cart with items built by hand in Phase 4.
+
+## Added during Phase 4 to 6
+
+| # | Question | Default used |
+|---|---|---|
+| 11 | Money format. The source prints "Rs.800" and "Rs. 1250". The theme uses Shopify's PKR money format, which may print "Rs. 800" or with commas. Changing the format is a store setting I do not touch. | `money_without_trailing_zeros`. Difference logged in `docs/visual-diff.md` after the preview exists. |
+| 12 | Sort option typo "Relavent" in the source. | Fixed to "Relevant". |
+| 13 | Source shows the search bar only on `/collection`. | Same: the header search icon opens the filter bar on collection pages and links to `/search` elsewhere. |
+| 14 | Source shipping fee is a flat Rs. 100 shown in the cart total. Shopify calculates shipping at checkout. | Cart total shows "Calculated at checkout". Ahsan sets the rate in Shipping settings. |
+| 15 | Default menus `main-menu` and `footer` exist. Editing them overwrites store data. | Create new menus instead (needs your OK before any write). |
+| 16 | Theme upload route. `themeCreate` from a GitHub zip fails ("Src is empty", GitHub nests files in a folder). | Ask Ahsan to connect the repo through Shopify's GitHub integration (steps in README). |
+| 17 | EasyPaisa appears in the source UI but is not implemented in the backend. | Not ported. Needs a payment provider decision. |

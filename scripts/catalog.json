@@ -1,0 +1,450 @@
+{
+  "_meta": {
+    "source": "GET https://brewphoria-backend.vercel.app/api/product/list",
+    "fetchedOn": "2026-11-24",
+    "currency": "PKR",
+    "status": "DRAFT",
+    "notes": "Normalised from the live Brewphoria API. Images are Cloudinary URLs (Shopify copies them on import). Alt text is not in the source, so alt = product title. Sorted by source date ascending so the newest product is created last."
+  },
+  "collections": [
+    {
+      "title": "Coffee",
+      "handle": "coffee",
+      "type": "manual"
+    },
+    {
+      "title": "Hot Chocolate",
+      "handle": "hot-chocolate",
+      "type": "manual"
+    },
+    {
+      "title": "Matcha & Friends",
+      "handle": "matcha-friends",
+      "type": "manual"
+    },
+    {
+      "title": "Chocolate",
+      "handle": "chocolate",
+      "type": "manual"
+    },
+    {
+      "title": "Munchables",
+      "handle": "munchables",
+      "type": "manual"
+    },
+    {
+      "title": "Spreads",
+      "handle": "spreads",
+      "type": "manual"
+    },
+    {
+      "title": "Best Sellers",
+      "handle": "best-sellers",
+      "type": "manual"
+    }
+  ],
+  "products": [
+    {
+      "handle": "krakakoa-creamy-coffee-milk-chocolate",
+      "title": "Krakakoa Creamy Coffee Milk Chocolate",
+      "descriptionHtml": "<p>A creamy, velvety blend of aromatic Robusta and Arabica beans makes for an addictive latte in every bite.</p>",
+      "productType": "Chocolate",
+      "status": "DRAFT",
+      "vendor": null,
+      "options": [
+        {
+          "name": "Size",
+          "values": [
+            "50g"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "option": "50g",
+          "price": "1250.00",
+          "sku": null
+        }
+      ],
+      "images": [
+        {
+          "position": 1,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795300213/fq96kzv6rpbhjyeh0mw3.jpg",
+          "alt": "Krakakoa Creamy Coffee Milk Chocolate"
+        },
+        {
+          "position": 2,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795300213/ez7haazmoaezbboaxxui.jpg",
+          "alt": "Krakakoa Creamy Coffee Milk Chocolate"
+        },
+        {
+          "position": 3,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795300213/cwq0iffk8zreklketzdf.jpg",
+          "alt": "Krakakoa Creamy Coffee Milk Chocolate"
+        },
+        {
+          "position": 4,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795300213/zsyzdbl3zh0uooas4a0t.jpg",
+          "alt": "Krakakoa Creamy Coffee Milk Chocolate"
+        }
+      ],
+      "collections": [
+        "chocolate"
+      ],
+      "metafields": [
+        {
+          "namespace": "custom",
+          "key": "source_id",
+          "type": "single_line_text_field",
+          "value": "6b021b76c999bf160247fa80"
+        }
+      ],
+      "sourceCreatedAt": "2026-11-21T22:30:14.629Z"
+    },
+    {
+      "handle": "krakakoa-dark-chocolate-clusters-with-seeds-berries",
+      "title": "Krakakoa Dark Chocolate Clusters with Seeds & Berries",
+      "descriptionHtml": "<p>Treat yourself to the ultimate combination of dark chocolate, seeds, and berries with Krakakoa's Dark Chocolate Seeds & Berries Cluster. Sustainably sourced and made with wholesome ingredients, this chocolate snack offers rich flavor, crunch, and sweetness in every bite. Perfect for chocolate lovers and health-conscious individuals alike. Halal : ☑️ Vegan : ☑️ Ingredients: Oatmeal,Sunflower seed, pumpkin seed, cranberry, coconut oil, Palm Sugar, Salt, Water, cinnamon, Dark 60%</p>",
+      "productType": "Munchables",
+      "status": "DRAFT",
+      "vendor": null,
+      "options": [
+        {
+          "name": "Size",
+          "values": [
+            "50g"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "option": "50g",
+          "price": "800.00",
+          "sku": null
+        }
+      ],
+      "images": [
+        {
+          "position": 1,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795301422/ffzqqdbipvsjiqtf4r46.webp",
+          "alt": "Krakakoa Dark Chocolate Clusters with Seeds & Berries"
+        }
+      ],
+      "collections": [
+        "munchables",
+        "best-sellers"
+      ],
+      "metafields": [
+        {
+          "namespace": "custom",
+          "key": "source_id",
+          "type": "single_line_text_field",
+          "value": "6b02202e7fdbbab84f1449af"
+        }
+      ],
+      "sourceCreatedAt": "2026-11-21T22:50:22.890Z"
+    },
+    {
+      "handle": "krakakoa-cinnamon-dark-milk-chocolate",
+      "title": "Krakakoa Cinnamon Dark Milk Chocolate",
+      "descriptionHtml": "<p>A part sweet, part spicy indulgence of fragrant cinnamon blends harmoniously with a creamy caramel.</p>",
+      "productType": "Chocolate",
+      "status": "DRAFT",
+      "vendor": null,
+      "options": [
+        {
+          "name": "Size",
+          "values": [
+            "50g"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "option": "50g",
+          "price": "1250.00",
+          "sku": null
+        }
+      ],
+      "images": [
+        {
+          "position": 1,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795301537/nh5p2r2m2phmnumjigvt.jpg",
+          "alt": "Krakakoa Cinnamon Dark Milk Chocolate"
+        },
+        {
+          "position": 2,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795301537/aml7hbxg0k7ouiasyhr3.jpg",
+          "alt": "Krakakoa Cinnamon Dark Milk Chocolate"
+        },
+        {
+          "position": 3,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795301537/lfbbfuwswwgjck3ii5au.jpg",
+          "alt": "Krakakoa Cinnamon Dark Milk Chocolate"
+        },
+        {
+          "position": 4,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795301537/j4ktlpepb9bbritrzbwb.jpg",
+          "alt": "Krakakoa Cinnamon Dark Milk Chocolate"
+        }
+      ],
+      "collections": [
+        "chocolate"
+      ],
+      "metafields": [
+        {
+          "namespace": "custom",
+          "key": "source_id",
+          "type": "single_line_text_field",
+          "value": "6b0220a67fdbbab84f1449b1"
+        }
+      ],
+      "sourceCreatedAt": "2026-11-21T22:52:22.220Z"
+    },
+    {
+      "handle": "krakakoa-blinkies-sweet-salty",
+      "title": "Krakakoa Blinkies, Sweet & Salty",
+      "descriptionHtml": "<p>This is the sweet and salty treat you’ve been waiting for! Clusters of roasted peanuts and salted caramel brittle, covered in smooth milk chocolate and dusted with cocoa powder. So good, blink and they’re gone.</p>",
+      "productType": "Munchables",
+      "status": "DRAFT",
+      "vendor": null,
+      "options": [
+        {
+          "name": "Size",
+          "values": [
+            "50g"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "option": "50g",
+          "price": "800.00",
+          "sku": null
+        }
+      ],
+      "images": [
+        {
+          "position": 1,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795301721/lcymexrja1mesxfpo4jc.jpg",
+          "alt": "Krakakoa Blinkies, Sweet & Salty"
+        },
+        {
+          "position": 2,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795301721/dmxnwux2zchccqjstmz4.webp",
+          "alt": "Krakakoa Blinkies, Sweet & Salty"
+        }
+      ],
+      "collections": [
+        "munchables"
+      ],
+      "metafields": [
+        {
+          "namespace": "custom",
+          "key": "source_id",
+          "type": "single_line_text_field",
+          "value": "6b02215a7fdbbab84f1449b8"
+        }
+      ],
+      "sourceCreatedAt": "2026-11-21T22:55:22.234Z"
+    },
+    {
+      "handle": "caffino-hazelnut-latte-coffee",
+      "title": "Caffino Hazelnut Latte Coffee",
+      "descriptionHtml": "<p>3-in-1 latte coffee with premium Hazelnut Latte Coffee flavor. Made from real coffee and quality real milk. Enjoy the Caffino Hazelnut Latte Coffee that definitely tastes coffee. PACKAGING INFO: 1 Pack Contains Ten Single-Use Sachets</p>",
+      "productType": "Coffee",
+      "status": "DRAFT",
+      "vendor": null,
+      "options": [
+        {
+          "name": "Size",
+          "values": [
+            "200g"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "option": "200g",
+          "price": "1500.00",
+          "sku": null
+        }
+      ],
+      "images": [
+        {
+          "position": 1,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795302320/jl9xdh4qkripw1ni1es3.jpg",
+          "alt": "Caffino Hazelnut Latte Coffee"
+        },
+        {
+          "position": 2,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795302320/hfu9bkndl54dra7fxhiy.jpg",
+          "alt": "Caffino Hazelnut Latte Coffee"
+        }
+      ],
+      "collections": [
+        "coffee"
+      ],
+      "metafields": [
+        {
+          "namespace": "custom",
+          "key": "source_id",
+          "type": "single_line_text_field",
+          "value": "6b0223b080087db9772d63e4"
+        }
+      ],
+      "sourceCreatedAt": "2026-11-21T23:05:20.621Z"
+    },
+    {
+      "handle": "caffino-bold-dark-cappucino",
+      "title": "Caffino Bold Dark Cappucino",
+      "descriptionHtml": "<p>3-in-1 coffee latte with premium Dark Cappuccino flavor. Made from real coffee and quality real milk. Comes with Coco-Malt topping with each sachet. Enjoy Caffino Dark Cappuccino with a guaranteed coffee flavor. PACKAGING: One pack comes with 6 single-use sachets.</p>",
+      "productType": "Coffee",
+      "status": "DRAFT",
+      "vendor": null,
+      "options": [
+        {
+          "name": "Size",
+          "values": [
+            "180g"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "option": "180g",
+          "price": "1350.00",
+          "sku": null
+        }
+      ],
+      "images": [
+        {
+          "position": 1,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795302541/pvgir9aptphqbqydkzlk.webp",
+          "alt": "Caffino Bold Dark Cappucino"
+        },
+        {
+          "position": 2,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795302541/hcjqijw4qe5ekktzscdw.jpg",
+          "alt": "Caffino Bold Dark Cappucino"
+        },
+        {
+          "position": 3,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795302541/rfcfaklhcdpxmr6gjxdw.png",
+          "alt": "Caffino Bold Dark Cappucino"
+        }
+      ],
+      "collections": [
+        "coffee"
+      ],
+      "metafields": [
+        {
+          "namespace": "custom",
+          "key": "source_id",
+          "type": "single_line_text_field",
+          "value": "6b02248e80087db9772d63e7"
+        }
+      ],
+      "sourceCreatedAt": "2026-11-21T23:09:02.044Z"
+    },
+    {
+      "handle": "caffino-bold-premium-latte",
+      "title": "Caffino Bold Premium Latte",
+      "descriptionHtml": "<p>3-in-1 latte coffee with premium latte flavor. Made from real coffee and quality real milk. Enjoy the Caffino Premium Latte that definitely tastes coffee. PACKAGING: Each pack comes with 5 single-use sachets.</p>",
+      "productType": "Coffee",
+      "status": "DRAFT",
+      "vendor": null,
+      "options": [
+        {
+          "name": "Size",
+          "values": [
+            "180g"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "option": "180g",
+          "price": "1150.00",
+          "sku": null
+        }
+      ],
+      "images": [
+        {
+          "position": 1,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795302675/o1xvuwmmtlre8aymwcha.png",
+          "alt": "Caffino Bold Premium Latte"
+        },
+        {
+          "position": 2,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795302675/hws7cjdijgdppzfi8iu3.jpg",
+          "alt": "Caffino Bold Premium Latte"
+        },
+        {
+          "position": 3,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795302675/ibplja6jj2efu2ewcudp.jpg",
+          "alt": "Caffino Bold Premium Latte"
+        }
+      ],
+      "collections": [
+        "coffee"
+      ],
+      "metafields": [
+        {
+          "namespace": "custom",
+          "key": "source_id",
+          "type": "single_line_text_field",
+          "value": "6b02251480087db9772d63e9"
+        }
+      ],
+      "sourceCreatedAt": "2026-11-21T23:11:16.156Z"
+    },
+    {
+      "handle": "harvestside-robusta-instant-coffee",
+      "title": "Harvestside Robusta Instant Coffee",
+      "descriptionHtml": "<p>No acrid bitterness, just fine grain coffee with nutty and aromatic undertones. Pure instant coffee, no grounds, thick crema, dissolves in cold water. More than just a cup of coffee, it's a gesture of support. With every bag of Harvestside, 5% of their profits are donated to aid our family in Palestine. Wake up, brew your purpose, and stand for humanity.</p>",
+      "productType": "Coffee",
+      "status": "DRAFT",
+      "vendor": null,
+      "options": [
+        {
+          "name": "Size",
+          "values": [
+            "100g"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "option": "100g",
+          "price": "1800.00",
+          "sku": null
+        }
+      ],
+      "images": [
+        {
+          "position": 1,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795303156/yldibxgpyt9rkkikmdyd.jpg",
+          "alt": "Harvestside Robusta Instant Coffee"
+        },
+        {
+          "position": 2,
+          "url": "https://res.cloudinary.com/dkzl0ncjv/image/upload/v1795303156/jchyzk2ljaciclb5uwdu.jpg",
+          "alt": "Harvestside Robusta Instant Coffee"
+        }
+      ],
+      "collections": [
+        "coffee"
+      ],
+      "metafields": [
+        {
+          "namespace": "custom",
+          "key": "source_id",
+          "type": "single_line_text_field",
+          "value": "6b0226f4bd2f1f0ef1448c67"
+        }
+      ],
+      "sourceCreatedAt": "2026-11-21T23:19:16.773Z"
+    }
+  ]
+}
