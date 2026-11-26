@@ -9,8 +9,9 @@
  */
 {
   "sections": {
-    "hero": {
+    "hero_banner_BP3ehD": {
       "type": "hero-banner",
+      "name": "t:sections.hero_banner.name",
       "settings": {
         "image": "shopify://shop_images/WhatsApp_Image_2026-11-26_at_4.33.16_PM.jpg",
         "image_alt": "Brewphoria",
@@ -45,12 +46,22 @@
         "text": "Join the Brewphoria list for new arrivals, limited releases, special bundles, and thoughtful updates that keep your coffee and chocolate ritual inspired.",
         "button_label": "SUBSCRIBE"
       }
+    },
+    "17957289323fceafbd": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "17957289931f2a6a14": {
+      "type": "_blocks",
+      "settings": {}
     }
   },
   "order": [
-    "hero",
+    "hero_banner_BP3ehD",
     "latest",
     "best_sellers",
-    "newsletter"
+    "newsletter",
+    "17957289323fceafbd",
+    "17957289931f2a6a14"
   ]
 }
