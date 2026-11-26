@@ -12,6 +12,12 @@
     "main": {
       "type": "main-collection",
       "blocks": {
+        "category_VMYpct": {
+          "type": "category",
+          "settings": {
+            "label": "ALL PRODUCTS"
+          }
+        },
         "coffee": {
           "type": "category",
           "settings": {
@@ -44,6 +50,7 @@
         }
       },
       "block_order": [
+        "category_VMYpct",
         "coffee",
         "matcha",
         "chocolate",
