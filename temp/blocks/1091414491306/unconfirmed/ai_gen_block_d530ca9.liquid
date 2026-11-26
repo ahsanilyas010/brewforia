@@ -1,6 +1,248 @@
+{% doc %}
+  @prompt
+    A magazine-style editorial layout
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-editorial-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.section_padding }}px;
+    color: {{ block.settings.text_color }};
+    background: {{ block.settings.background_color }};
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__inner {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__masthead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 0 12px;
+    border-bottom: 1px solid {{ block.settings.rule_color }};
+    color: {{ block.settings.muted_color }};
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__brand {
+    color: {{ block.settings.heading_color }};
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(220px, .75fr);
+    gap: clamp(24px, 5vw, 68px);
+    padding-top: 30px;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__kicker {
+    margin: 0 0 12px;
+    color: {{ block.settings.accent_color }};
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__title {
+    max-width: 850px;
+    margin: 0;
+    color: {{ block.settings.heading_color }};
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(36px, 6.6vw, {{ block.settings.heading_size }}px);
+    font-weight: 500;
+    line-height: .98;
+    letter-spacing: -.04em;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__dek {
+    max-width: 720px;
+    margin: 18px 0 24px;
+    color: {{ block.settings.text_color }};
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(17px, 2vw, 21px);
+    line-height: 1.5;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 620px;
+    object-fit: cover;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__placeholder {
+    position: relative;
+    display: flex;
+    min-height: 260px;
+    aspect-ratio: 16 / 9;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: {{ block.settings.placeholder_color }};
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__placeholder svg {
+    width: 100%;
+    height: 100%;
+    color: {{ block.settings.muted_color }};
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__placeholder-label {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    padding: 8px 12px;
+    color: {{ block.settings.heading_color }};
+    background: {{ block.settings.background_color }};
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__caption {
+    margin: 8px 0 0;
+    color: {{ block.settings.muted_color }};
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__story {
+    padding-top: 4px;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__story-heading {
+    margin: 0 0 16px;
+    padding-bottom: 11px;
+    border-bottom: 2px solid {{ block.settings.heading_color }};
+    color: {{ block.settings.heading_color }};
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__story-copy {
+    color: {{ block.settings.text_color }};
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__story-copy p {
+    margin: 0 0 16px;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__story-copy p:first-child::first-letter {
+    float: left;
+    margin: 3px 8px 0 0;
+    color: {{ block.settings.accent_color }};
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 48px;
+    line-height: .8;
+  }
+
+  .ai-editorial-{{ ai_gen_id }}__byline {
+    margin: 18px 0 0;
+    padding-top: 12px;
+    border-top: 1px solid {{ block.settings.rule_color }};
+    color: {{ block.settings.muted_color }};
+    font-size: 12px;
+    letter-spacing: .04em;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-editorial-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding | divided_by: 2 }}px 16px;
+    }
+    .ai-editorial-{{ ai_gen_id }}__grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding-top: 24px;
+    }
+    .ai-editorial-{{ ai_gen_id }}__story {
+      padding-top: 0;
+    }
+    .ai-editorial-{{ ai_gen_id }}__masthead {
+      font-size: 10px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-editorial-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-editorial-{{ ai_gen_id }}__inner">
+    <div class="ai-editorial-{{ ai_gen_id }}__masthead">
+      <span class="ai-editorial-{{ ai_gen_id }}__brand">{{ block.settings.publication | escape }}</span>
+      <span>{{ block.settings.issue_label | escape }}</span>
+    </div>
+    <div class="ai-editorial-{{ ai_gen_id }}__grid">
+      <article>
+        {% if block.settings.eyebrow != blank %}<p class="ai-editorial-{{ ai_gen_id }}__kicker">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+        {% if block.settings.heading != blank %}<h2 class="ai-editorial-{{ ai_gen_id }}__title">{{ block.settings.heading | escape }}</h2>{% endif %}
+        {% if block.settings.dek != blank %}<p class="ai-editorial-{{ ai_gen_id }}__dek">{{ block.settings.dek | escape }}</p>{% endif %}
+        {% if block.settings.image != blank %}
+          <figure>
+            <img class="ai-editorial-{{ ai_gen_id }}__image" src="{{ block.settings.image | image_url: width: 1800 }}" alt="{{ block.settings.image.alt | default: block.settings.heading | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+            {% if block.settings.caption != blank %}<figcaption class="ai-editorial-{{ ai_gen_id }}__caption">{{ block.settings.caption | escape }}</figcaption>{% endif %}
+          </figure>
+        {% else %}
+          <div class="ai-editorial-{{ ai_gen_id }}__placeholder">
+            {{ 'image' | placeholder_svg_tag }}
+            <span class="ai-editorial-{{ ai_gen_id }}__placeholder-label">Add an editorial image to complete this feature.</span>
+          </div>
+        {% endif %}
+      </article>
+      <aside class="ai-editorial-{{ ai_gen_id }}__story">
+        {% if block.settings.sidebar_heading != blank %}<h3 class="ai-editorial-{{ ai_gen_id }}__story-heading">{{ block.settings.sidebar_heading | escape }}</h3>{% endif %}
+        {% if block.settings.story != blank %}<div class="ai-editorial-{{ ai_gen_id }}__story-copy">{{ block.settings.story }}</div>{% endif %}
+        {% if block.settings.byline != blank %}<p class="ai-editorial-{{ ai_gen_id }}__byline">{{ block.settings.byline | escape }}</p>{% endif %}
+      </aside>
+    </div>
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Editorial layout",
+  "settings": [
+    { "type": "header", "content": "Editorial content" },
+    { "type": "text", "id": "publication", "label": "Publication name", "default": "BREWPHORIA JOURNAL" },
+    { "type": "text", "id": "issue_label", "label": "Issue label", "default": "THE CULTURE OF COFFEE" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Origin stories" },
+    { "type": "text", "id": "heading", "label": "Headline", "default": "A slower morning, thoughtfully brewed" },
+    { "type": "textarea", "id": "dek", "label": "Standfirst", "default": "Meet the rituals, people, and places behind a better cup of coffee." },
+    { "type": "image_picker", "id": "image", "label": "Feature image" },
+    { "type": "text", "id": "caption", "label": "Image caption", "default": "A quiet moment at the start of the day." },
+    { "type": "text", "id": "sidebar_heading", "label": "Sidebar heading", "default": "The ritual" },
+    { "type": "richtext", "id": "story", "label": "Sidebar story", "default": "<p>Good coffee invites you to pause. From the first fragrant pour to the final warm sip, small details turn an everyday cup into a moment worth keeping.</p><p>Choose fresh beans, give them room to bloom, and make the process your own.</p>" },
+    { "type": "text", "id": "byline", "label": "Byline", "default": "Words from the Brewphoria team" },
+    { "type": "header", "content": "Layout and colors" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "section_padding", "label": "Section padding", "min": 10, "max": 70, "step": 5, "unit": "px", "default": 35 },
+    { "type": "range", "id": "heading_size", "label": "Headline size", "min": 44, "max": 80, "step": 4, "unit": "px", "default": 64 },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#fffaf6" },
+    { "type": "color", "id": "heading_color", "label": "Headings", "default": "#3f2b21" },
+    { "type": "color", "id": "text_color", "label": "Body text", "default": "#6b5648" },
+    { "type": "color", "id": "muted_color", "label": "Secondary text", "default": "#6b5648" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#8a4f30" },
+    { "type": "color", "id": "rule_color", "label": "Rules", "default": "#ead0bf" },
+    { "type": "color", "id": "placeholder_color", "label": "Image placeholder", "default": "#ead9cd" }
+  ],
+  "presets": [{ "name": "Editorial layout" }],
+  "tag": null,
+  "class": "editorial-layout-block"
+}
 {% endschema %}
