@@ -17,7 +17,7 @@
           "settings": {
             "label": "Phone",
             "value": "WhatsApp: +92 3212101928",
-            "description": "Message us for urgent queries,",
+            "description": "Message us for urgent queries.",
             "url": "tel:+92 3212101928",
             "cta": "Call Now"
           }
@@ -46,7 +46,7 @@
           "type": "tile",
           "settings": {
             "label": "Support Hours",
-            "value": "Mon - Sat, 10AM to 8PM",
+            "value": "Mon - Fri 9AM to 5PM",
             "description": "Responses are typically shared within a few hours.",
             "url": "",
             "cta": ""
