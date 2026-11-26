@@ -51,7 +51,7 @@
         "spreads"
       ],
       "custom_css": [
-        ".section-title__text,.section-title__text strong {font-family: \"EB Garamond\", serif; color: #3f2418;}",
+        ".section-title__text,.section-title__text strong {font-family: Georgia, \"Times New Roman\", serif; color: #3f2418;}",
         ".section-title__rule {background-color: #3f2418;}"
       ],
       "settings": {
