@@ -22,7 +22,7 @@
     "latest": {
       "type": "product-grid",
       "custom_css": [
-        ".section-title__text,.section-title__text strong {font-family: \"EB Garamond\", serif; color: #3f2418;}",
+        ".section-title__text,.section-title__text strong {font-family: Didot, \"Bodoni MT\", \"Times New Roman\", serif; font-weight: 400; text-transform: uppercase; letter-spacing: -0.045em; font-size: clamp(32px, 5vw, 60px); line-height: 1.1; color: #3f2418;}",
         ".section-title__rule {background-color: #3f2418;}"
       ],
       "settings": {
@@ -36,12 +36,11 @@
     "best_sellers": {
       "type": "product-grid",
       "custom_css": [
-        ".section-title__text,.section-title__text strong {font-family: \"EB Garamond\", serif; color: #3f2418;}",
-        ".section-title__rule {background-color: #3f2418;}",
-        ".product-grid__list {display: flex; flex-wrap: wrap; justify-content: center;}",
-        ".product-grid__list > li {flex: 0 0 calc((100% - 1.25rem) / 2);}",
-        "@media (min-width: 1024px) {.product-grid__list > li {flex-basis: calc((100% - 3.75rem) / 4); }}",
-        "@media (min-width: 1280px) {.product-grid__list > li {flex-basis: calc((100% - 5rem) / 5); }}"
+        ".product-grid__list{display:flex;flex-wrap:wrap;justify-content:center}",
+        ".product-grid__list>li{width:calc(50% - 10px)}",
+        "@media(min-width:1024px){.product-grid__list>li{width:18%}}",
+        ".section-title__text,.section-title__text strong{font:400 clamp(32px,5vw,60px)/1.1 Didot,\"Bodoni MT\",\"Times New Roman\",serif;text-transform:uppercase;letter-spacing:-.045em;color:#3f2418}",
+        ".section-title__rule{background:#3f2418}"
       ],
       "settings": {
         "title_first": "BEST",
