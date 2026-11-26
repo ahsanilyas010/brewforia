@@ -13,7 +13,8 @@
       "type": "about-intro",
       "custom_css": [
         ".section-title__text,.section-title__text strong {font-family: Didot, \"Bodoni MT\", \"Times New Roman\", serif; font-weight: 400; text-transform: uppercase; letter-spacing: -0.045em; font-size: clamp(26px, 3vw, 40px); line-height: 1.1; color: #3f2418;}",
-        ".section-title__rule {background-color: #3f2418;}"
+        ".section-title__rule {background-color: #3f2418;}",
+        ".about-intro__image {height: auto; object-fit: contain; align-self: flex-start;}"
       ],
       "settings": {
         "title_first": "ABOUT",
@@ -58,7 +59,7 @@
         "f3"
       ],
       "custom_css": [
-        ".section-title__text,.section-title__text strong {font-family: Didot, \"Bodoni MT\", \"Times New Roman\", serif; font-weight: 400; text-transform: uppercase; letter-spacing: -0.045em; font-size: clamp(26px,3vw,40px); line-height: 1.1; color: #3f2418;}",
+        ".section-title__text,.section-title__text strong {font-family: Didot, \"Bodoni MT\", \"Times New Roman\", serif; font-weight: 400; text-transform: uppercase; letter-spacing: -0.045em; font-size: clamp(26px, 3vw, 40px); line-height: 1.1; color: #3f2418;}",
         ".section-title__rule {background-color: #3f2418;}"
       ],
       "settings": {
