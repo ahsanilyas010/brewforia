@@ -25,7 +25,7 @@
         "title_first": "Time To",
         "title_second": "Treat Yourself",
         "description": "Carefully selected coffees and artisanal chocolates, bold in character, cozy in spirit, and crafted to make every moment a little sweeter.",
-        "collection": "chocolate",
+        "collection": "all-products",
         "limit": 4
       }
     },
@@ -54,6 +54,10 @@
     "17957289931f2a6a14": {
       "type": "_blocks",
       "settings": {}
+    },
+    "1795729934e0fe0036": {
+      "type": "_blocks",
+      "settings": {}
     }
   },
   "order": [
@@ -62,6 +66,7 @@
     "best_sellers",
     "newsletter",
     "17957289323fceafbd",
-    "17957289931f2a6a14"
+    "17957289931f2a6a14",
+    "1795729934e0fe0036"
   ]
 }
