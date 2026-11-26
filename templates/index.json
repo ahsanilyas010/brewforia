@@ -12,6 +12,7 @@
     "hero": {
       "type": "hero-banner",
       "settings": {
+        "image": "shopify://shop_images/WhatsApp_Image_2026-11-26_at_3.56.33_PM.jpg",
         "image_alt": "Brewphoria",
         "button_label": "Shop Now",
         "button_link": ""
