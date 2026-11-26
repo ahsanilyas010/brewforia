@@ -12,20 +12,93 @@
     "main": {
       "type": "contact-panels",
       "blocks": {
-        "phone": { "type": "tile", "settings": { "label": "Phone", "value": "+92 300 0000000", "description": "Call for order support and urgent help.", "url": "tel:+923000000000", "cta": "Call now" } },
-        "email": { "type": "tile", "settings": { "label": "Email", "value": "utanveer485@gmail.com", "description": "Best for detailed questions and business requests.", "url": "mailto:utanveer485@gmail.com", "cta": "Send email" } },
-        "location": { "type": "tile", "settings": { "label": "Location", "value": "Islamabad, Pakistan", "description": "Serving customers across Pakistan with trusted shipping partners." } },
-        "hours": { "type": "tile", "settings": { "label": "Support Hours", "value": "Mon - Sat, 10AM to 8PM", "description": "Responses are typically shared within a few hours." } },
-        "c1": { "type": "chip", "settings": { "text": "Order support" } },
-        "c2": { "type": "chip", "settings": { "text": "Delivery updates" } },
-        "c3": { "type": "chip", "settings": { "text": "Product guidance" } }
+        "phone": {
+          "type": "tile",
+          "settings": {
+            "label": "Phone",
+            "value": "WhatsApp: +92 3212101928",
+            "description": "Message us for urgent queries,",
+            "url": "tel:+92 3212101928",
+            "cta": "Call Now"
+          }
+        },
+        "email": {
+          "type": "tile",
+          "settings": {
+            "label": "Email",
+            "value": "brewphoriapk@gmail.com",
+            "description": "Best for detailed questions and business requests.",
+            "url": "mailto:brewphoriapk@gmail.com",
+            "cta": "Send Email"
+          }
+        },
+        "location": {
+          "type": "tile",
+          "settings": {
+            "label": "Location",
+            "value": "Islamabad, Pakistan",
+            "description": "Serving customers across Pakistan with trusted shipping partners.",
+            "url": "",
+            "cta": ""
+          }
+        },
+        "hours": {
+          "type": "tile",
+          "settings": {
+            "label": "Support Hours",
+            "value": "Mon - Sat, 10AM to 8PM",
+            "description": "Responses are typically shared within a few hours.",
+            "url": "",
+            "cta": ""
+          }
+        },
+        "c1": {
+          "type": "chip",
+          "settings": {
+            "text": "Order support"
+          }
+        },
+        "c2": {
+          "type": "chip",
+          "settings": {
+            "text": "Delivery updates"
+          }
+        },
+        "c3": {
+          "type": "chip",
+          "settings": {
+            "text": "Product guidance"
+          }
+        }
       },
-      "block_order": ["phone", "email", "location", "hours", "c1", "c2", "c3"],
+      "block_order": [
+        "phone",
+        "email",
+        "location",
+        "hours",
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "custom_css": [
+        ".section-title__text,.section-title__text strong {font-family: Didot, \"Bodoni MT\", \"Times New Roman\", serif; font-weight: 400; text-transform: uppercase; letter-spacing: -0.045em; font-size: clamp(26px, 3vw, 40px); line-height: 1.1; color: #3f2418;}",
+        ".section-title__rule {background-color: #3f2418;}"
+      ],
       "settings": {
+        "title_first": "CONTACT",
+        "title_second": "US",
+        "image_alt": "Brewphoria customer support",
+        "eyebrow": "Quick Contact",
+        "heading": "Need help right away?",
+        "text": "For fastest support, call us directly. For order details and collaboration requests, send us an email and we will get back to you promptly.",
+        "call_label": "Call Support",
         "call_url": "tel:+923000000000",
+        "email_label": "Email Team",
         "email_url": "mailto:utanveer485@gmail.com"
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
