@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "trust_items": "100% Original Product\nCash on Delivery Available\nEasy exchange and return policy"
+      }
+    },
+    "related": {
+      "type": "related-products",
+      "settings": {
+        "title_first": "RELATED",
+        "title_second": "PRODUCTS",
+        "limit": 5
+      }
+    }
+  },
+  "order": ["main", "related"]
+}

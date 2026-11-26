@@ -1,0 +1,20 @@
+{% doc %}
+  Renders previous and next links for a paginate object.
+
+  @param {object} paginate - The paginate object from a paginate tag
+
+  @example
+  {% render 'pagination', paginate: paginate %}
+{% enddoc %}
+
+{%- if paginate.pages > 1 -%}
+  <nav class="pagination" aria-label="{{ 'general.pagination' | t }}">
+    {%- if paginate.previous -%}
+      <a href="{{ paginate.previous.url }}">{{ 'general.previous' | t }}</a>
+    {%- endif -%}
+    <span>{{ 'general.page_of' | t: current: paginate.current_page, total: paginate.pages }}</span>
+    {%- if paginate.next -%}
+      <a href="{{ paginate.next.url }}">{{ 'general.next' | t }}</a>
+    {%- endif -%}
+  </nav>
+{%- endif -%}

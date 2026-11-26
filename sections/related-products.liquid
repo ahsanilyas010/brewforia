@@ -1,0 +1,53 @@
+<section class="related-products">
+  <div class="related-products__title">
+    {% render 'section-title', text1: section.settings.title_first, text2: section.settings.title_second %}
+  </div>
+  <ul class="related-products__grid">
+    {%- assign shown = 0 -%}
+    {%- for item in collections.all.products -%}
+      {%- if item.type == product.type and item.id != product.id -%}
+        <li>{% render 'product-card', product: item %}</li>
+        {%- assign shown = shown | plus: 1 -%}
+        {%- if shown >= section.settings.limit %}{% break %}{% endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% stylesheet %}
+  .related-products { margin-block: 6rem; }
+  .related-products__title { padding-block: 0.5rem; text-align: center; font-size: 1.875rem; line-height: 2.25rem; }
+  .related-products__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+  @media (min-width: 640px) { .related-products__grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 768px) { .related-products__grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 1024px) { .related-products__grid { grid-template-columns: repeat(5, 1fr); } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.related_products.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_first",
+      "label": "t:sections.related_products.settings.title_first.label",
+      "default": "RELATED"
+    },
+    {
+      "type": "text",
+      "id": "title_second",
+      "label": "t:sections.related_products.settings.title_second.label",
+      "default": "PRODUCTS"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "t:sections.related_products.settings.limit.label",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    }
+  ]
+}
+{% endschema %}

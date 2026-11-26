@@ -1,0 +1,25 @@
+{% doc %}
+  Renders a labelled pill input.
+
+  @param {string} id - Input id
+  @param {string} name - Input name
+  @param {string} label - Visible label text (hidden visually)
+  @param {string} [type] - Input type, default text
+  @param {string} [placeholder] - Placeholder text
+  @param {string} [value] - Initial value
+  @param {boolean} [required] - Marks the field as required
+
+  @example
+  {% render 'input', id: 'email', name: 'contact[email]', label: 'Email', type: 'email' %}
+{% enddoc %}
+
+<label class="visually-hidden" for="{{ id }}">{{ label }}</label>
+<input
+  class="input"
+  id="{{ id }}"
+  name="{{ name }}"
+  type="{{ type | default: 'text' }}"
+  placeholder="{{ placeholder }}"
+  value="{{ value }}"
+  {% if required %}required{% endif %}
+>

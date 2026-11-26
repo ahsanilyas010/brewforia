@@ -1,0 +1,16 @@
+{% doc %}
+  Renders the two-tone section heading with a short rule (source: Title.jsx).
+
+  @param {string} text1 - Lighter first word
+  @param {string} text2 - Darker second word
+  @param {string} [tag] - Heading tag, default h2
+
+  @example
+  {% render 'section-title', text1: 'BEST', text2: 'SELLER' %}
+{% enddoc %}
+
+{%- assign heading_tag = tag | default: 'h2' -%}
+<div class="section-title">
+  <{{ heading_tag }} class="section-title__text">{{ text1 }}<strong>{{ text2 }}</strong></{{ heading_tag }}>
+  <span class="section-title__rule" aria-hidden="true"></span>
+</div>

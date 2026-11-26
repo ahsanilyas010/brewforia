@@ -1,0 +1,77 @@
+<section class="about-intro">
+  <div class="about-intro__title">
+    {% render 'section-title', text1: section.settings.title_first, text2: section.settings.title_second, tag: 'h1' %}
+  </div>
+
+  <div class="about-intro__layout">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 900 | image_tag: widths: '450, 675, 900', sizes: '(min-width: 768px) 450px, 100vw', alt: section.settings.image_alt, class: 'about-intro__image', loading: 'lazy' }}
+    {%- else -%}
+      <img class="about-intro__image" src="{{ 'about-us.jpg' | asset_url }}" alt="{{ section.settings.image_alt }}" width="1080" height="1350" loading="lazy">
+    {%- endif -%}
+
+    <div class="about-intro__body">
+      <p class="about-intro__eyebrow">{{ section.settings.eyebrow }}</p>
+      <p class="about-intro__lead">{{ section.settings.lead }}</p>
+      <p class="about-intro__text">{{ section.settings.text }}</p>
+      <div class="about-intro__mission">
+        <b>{{ section.settings.mission_title }}</b>
+        <p>{{ section.settings.mission_text }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .about-intro__title { padding-top: 2rem; border-top: 1px solid; text-align: center; font-size: 1.5rem; line-height: 2rem; }
+  .about-intro__layout { display: flex; flex-direction: column; gap: 4rem; margin-block: 2.5rem; }
+  .about-intro__image { width: 100%; border-radius: var(--radius-2xl); box-shadow: var(--shadow-about-image); object-fit: cover; }
+  .about-intro__body { display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; color: #6d584b; }
+  .about-intro__eyebrow { font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35em; color: #a0582b; }
+  .about-intro__lead { font-size: 1.125rem; line-height: 2rem; color: #4e392d; }
+  .about-intro__text { line-height: 2rem; }
+  .about-intro__mission {
+    padding: 1.25rem 1.5rem; border: 1px solid #e8c8b1; border-radius: var(--radius-2xl);
+    background: linear-gradient(to right, #fff6ef, #f8e1d0); box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  }
+  .about-intro__mission b { color: #3f2a1f; font-weight: 700; }
+  .about-intro__mission p { margin-top: 0.5rem; line-height: 1.75rem; color: #6d584b; }
+  @media (min-width: 768px) {
+    .about-intro__layout { flex-direction: row; }
+    .about-intro__image { max-width: 450px; }
+    .about-intro__body { width: 50%; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.about_intro.name",
+  "settings": [
+    { "type": "text", "id": "title_first", "label": "t:sections.about_intro.settings.title_first.label", "default": "ABOUT" },
+    { "type": "text", "id": "title_second", "label": "t:sections.about_intro.settings.title_second.label", "default": "US" },
+    { "type": "image_picker", "id": "image", "label": "t:sections.about_intro.settings.image.label", "info": "t:sections.about_intro.settings.image.info" },
+    { "type": "text", "id": "image_alt", "label": "t:sections.about_intro.settings.image_alt.label", "default": "About our store" },
+    { "type": "text", "id": "eyebrow", "label": "t:sections.about_intro.settings.eyebrow.label", "default": "Brewed with purpose" },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "t:sections.about_intro.settings.lead.label",
+      "default": "Our store was built for people who want more than a quick purchase. We wanted to create a space where every product feels considered, every detail feels warm, and every order brings a little everyday delight to your routine."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:sections.about_intro.settings.text.label",
+      "default": "From signature coffee blends to comforting treats, we handpick collections that balance quality, character, and value. The experience matters just as much as the product, so we focus on clear browsing, thoughtful presentation, and service that feels genuinely helpful."
+    },
+    { "type": "text", "id": "mission_title", "label": "t:sections.about_intro.settings.mission_title.label", "default": "Our Mission" },
+    {
+      "type": "textarea",
+      "id": "mission_text",
+      "label": "t:sections.about_intro.settings.mission_text.label",
+      "default": "We are here to make premium everyday indulgence feel approachable by pairing trusted quality with a smooth, welcoming shopping experience from first click to final delivery."
+    }
+  ],
+  "presets": [{ "name": "t:sections.about_intro.name" }]
+}
+{% endschema %}

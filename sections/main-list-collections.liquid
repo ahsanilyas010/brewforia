@@ -1,0 +1,15 @@
+<div class="list-collections">
+  <h1>{{ 'collections.title' | t }}</h1>
+  <ul>
+    {%- for collection in collections -%}
+      <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main_list_collections.name",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,97 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "main_navigation": "Main navigation",
+    "footer_navigation": "Footer navigation",
+    "search": "Search",
+    "account": "Account",
+    "cart": "Cart",
+    "continue_shopping": "Continue shopping",
+    "not_found_title": "Page not found",
+    "page_number": "Page {{ number }}",
+    "pagination": "Pagination",
+    "previous": "Previous",
+    "next": "Next",
+    "page_of": "Page {{ current }} of {{ total }}"
+  },
+  "products": {
+    "from_price": "From {{ price }}",
+    "select_option": "Select size",
+    "add_to_cart": "Add to cart",
+    "sold_out": "Sold out",
+    "select_size": "Select Size",
+    "select_size_hint": "Select a size to continue",
+    "ready_to_add": "Ready to add size {{ size }}",
+    "added": "Added to cart",
+    "description": "Description"
+  },
+  "collections": {
+    "title": "Collections",
+    "no_products": "No products found",
+    "close_search": "Close search",
+    "sort_label": "Sort products",
+    "sort_relevant": "Sort by: Relevant",
+    "sort_low_high": "Sort by: Low to High",
+    "sort_high_low": "Sort by: High to Low"
+  },
+  "cart": {
+    "title": "My cart",
+    "empty": "Your cart is empty",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "update": "Update",
+    "checkout": "Checkout",
+    "shipping": "Shipping Fee",
+    "shipping_at_checkout": "Calculated at checkout",
+    "total": "Total"
+  },
+  "search": {
+    "title": "Search",
+    "label": "Search our store",
+    "results_count": {
+      "one": "{{ count }} result for \"{{ terms }}\"",
+      "other": "{{ count }} results for \"{{ terms }}\""
+    }
+  },
+  "password": {
+    "message": "This store is private.",
+    "label": "Password",
+    "submit": "Enter"
+  },
+  "gift_card": {
+    "title": "Gift card"
+  },
+  "styleguide": {
+    "colors": "Colors",
+    "type": "Typography",
+    "buttons": "Buttons",
+    "inputs": "Inputs",
+    "cards": "Product card and price",
+    "icons": "Icons",
+    "radii_shadows": "Radii and shadows",
+    "badge": "Badge and title",
+    "sample_text": "The quick brown fox jumps over the lazy dog",
+    "primary": "Shop now",
+    "secondary": "Email team",
+    "input_label": "Email address",
+    "input_placeholder": "Enter your email address"
+  },
+  "header": {
+    "logo_alt": "{{ brand }} logo",
+    "profile": "Profile",
+    "orders": "Orders",
+    "logout": "Logout",
+    "open_menu": "Open menu",
+    "back": "Back"
+  },
+  "footer": {
+    "instagram": "Instagram",
+    "copyright": "Copyright {{ year }} {{ brand }}. All rights reserved."
+  },
+  "newsletter": {
+    "email_label": "Email address",
+    "placeholder": "Enter your email address",
+    "success": "Thank you for subscribing to our newsletter!"
+  }
+}

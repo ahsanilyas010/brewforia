@@ -1,0 +1,94 @@
+{%- liquid
+  assign brand = settings.brand_name | default: shop.name
+  assign hero_alt = section.settings.image_alt | default: brand
+  assign button_link = section.settings.button_link | default: routes.all_products_collection_url
+-%}
+
+<section class="hero-banner">
+  {%- if section.settings.image != blank -%}
+    {{ section.settings.image | image_url: width: 1600 | image_tag: widths: '750, 1100, 1600', sizes: '(min-width: 1024px) 82vw, 100vw', alt: hero_alt, class: 'hero-banner__image', loading: 'eager', fetchpriority: 'high' }}
+  {%- else -%}
+    <img class="hero-banner__image" src="{{ 'hero.png' | asset_url }}" alt="{{ hero_alt }}" width="1365" height="768" fetchpriority="high">
+  {%- endif -%}
+  <div class="hero-banner__overlay"></div>
+  <div class="hero-banner__actions">
+    <a class="hero-banner__button" href="{{ button_link }}">{{ section.settings.button_label }}</a>
+  </div>
+</section>
+
+{% stylesheet %}
+  .hero-banner {
+    position: relative; display: flex; align-items: flex-end; justify-content: center;
+    width: 100%; margin: 7rem auto 0; padding-inline: 1rem; overflow: hidden;
+    min-height: clamp(15rem, 50vh, 60vh); border-radius: var(--radius-hero); background: #fff;
+    animation: hero-fade-in 1.2s var(--ease-hero) both;
+  }
+  .hero-banner__image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .hero-banner__overlay { position: absolute; inset: 0; background: rgb(0 0 0 / 0.3); animation: hero-overlay 1.5s 0.2s both; }
+  .hero-banner__actions { position: relative; display: flex; justify-content: center; width: 100%; padding-bottom: 1.5rem; }
+  .hero-banner__button {
+    padding: 0.75rem 1.5rem; border-radius: var(--radius-pill); background: var(--color-primary); color: #fff;
+    font-size: 0.875rem; line-height: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: all var(--duration-base); animation: hero-bounce 1s infinite;
+  }
+  .hero-banner__button:hover { background: var(--color-primary-hover); }
+  @keyframes hero-fade-in { 0% { opacity: 0; transform: scale(1.04); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes hero-overlay { 0% { opacity: 0.5; } 100% { opacity: 0.3; } }
+  @keyframes hero-bounce {
+    0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+    50% { transform: none; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-banner, .hero-banner__overlay, .hero-banner__button { animation: none; }
+  }
+  @media (min-width: 640px) {
+    .hero-banner { padding-inline: 1.5rem; }
+    .hero-banner__actions { padding-bottom: 2rem; }
+    .hero-banner__button { padding-inline: 2rem; font-size: 1rem; line-height: 1.5rem; }
+  }
+  @media (min-width: 768px) {
+    .hero-banner__actions { padding-bottom: 2.5rem; }
+    .hero-banner__button { padding: 1rem 2.5rem; font-size: 1.125rem; line-height: 1.75rem; }
+  }
+  @media (min-width: 1024px) {
+    .hero-banner { padding-inline: 2rem; }
+    .hero-banner__actions { padding-bottom: 3rem; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.hero_banner.name",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.hero_banner.settings.image.label",
+      "info": "t:sections.hero_banner.settings.image.info"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "t:sections.hero_banner.settings.image_alt.label",
+      "default": "Brewphoria"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.hero_banner.settings.button_label.label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.hero_banner.settings.button_link.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.hero_banner.name"
+    }
+  ]
+}
+{% endschema %}

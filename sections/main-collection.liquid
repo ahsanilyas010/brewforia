@@ -1,0 +1,166 @@
+<collection-filters class="collection">
+  <div class="collection__search" data-search-bar hidden>
+    <div class="collection__search-field">
+      <label class="visually-hidden" for="collection-search-{{ section.id }}">{{ 'search.label' | t }}</label>
+      <input id="collection-search-{{ section.id }}" class="collection__search-input" type="search" placeholder="{{ 'general.search' | t }}">
+      {% render 'icon', name: 'search', alt: '' %}
+    </div>
+    <button class="collection__search-close" type="button" data-search-close>
+      <img class="collection__search-close-icon" src="{{ 'icon-close.png' | asset_url }}" alt="{{ 'collections.close_search' | t }}" width="12" height="12" loading="lazy">
+    </button>
+  </div>
+
+  <div class="collection__layout">
+    <aside class="collection__filters">
+      <p class="collection__filters-heading">
+        {{ section.settings.filters_heading }}
+        <button class="collection__filter-toggle" type="button" data-filter-toggle aria-expanded="true" aria-controls="filter-panel-{{ section.id }}">
+          <img class="collection__filter-icon" src="{{ 'icon-chevron-down.png' | asset_url }}" alt="" width="24" height="24" loading="lazy">
+          <span class="visually-hidden">{{ section.settings.filters_heading }}</span>
+        </button>
+      </p>
+      <div class="collection__filter-panel" id="filter-panel-{{ section.id }}" data-filter-panel>
+        <p class="collection__filter-title">{{ section.settings.categories_heading }}</p>
+        <ul class="collection__categories">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}>
+              <label class="collection__category">
+                <input class="collection__checkbox" type="checkbox" value="{{ block.settings.label | downcase | escape }}">
+                {{ block.settings.label }}
+              </label>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </aside>
+
+    <div class="collection__results">
+      <div class="collection__toolbar">
+        <div class="collection__title">
+          {%- if collection.handle == 'all' -%}
+            {% render 'section-title', text1: section.settings.title_first, text2: section.settings.title_second %}
+          {%- else -%}
+            {% render 'section-title', text1: '', text2: collection.title %}
+          {%- endif -%}
+        </div>
+        <label class="visually-hidden" for="sort-{{ section.id }}">{{ 'collections.sort_label' | t }}</label>
+        <select id="sort-{{ section.id }}" class="collection__sort" data-sort>
+          <option value="relevant">{{ 'collections.sort_relevant' | t }}</option>
+          <option value="low-high">{{ 'collections.sort_low_high' | t }}</option>
+          <option value="high-low">{{ 'collections.sort_high_low' | t }}</option>
+        </select>
+      </div>
+
+      {%- paginate collection.products by 48 -%}
+        <ul class="collection__grid" data-grid>
+          {%- for product in collection.products -%}
+            <li data-category="{{ product.type | downcase | escape }}" data-title="{{ product.title | downcase | escape }}" data-price="{{ product.price_min }}">
+              {% render 'product-card', product: product %}
+            </li>
+          {%- endfor -%}
+        </ul>
+        <p class="collection__empty" data-empty{% if collection.products_count > 0 %} hidden{% endif %}>{{ 'collections.no_products' | t }}</p>
+        {% render 'pagination', paginate: paginate %}
+      {%- endpaginate -%}
+    </div>
+  </div>
+</collection-filters>
+
+{% stylesheet %}
+  .collection__search { border: 1px solid var(--color-gray-300); text-align: center; }
+  .collection__search[hidden] { display: none; }
+  .collection__search-field {
+    display: inline-flex; align-items: center; justify-content: center; width: 75%; margin: 1.25rem 0.75rem;
+    padding: 0.5rem 1.25rem; border: 1px solid var(--color-gray-400); border-radius: var(--radius-pill);
+  }
+  .collection__search-input { flex: 1; min-width: 0; outline: none; background: inherit; font-size: 0.875rem; line-height: 1.25rem; }
+  .collection__search-close { display: inline; cursor: pointer; }
+  .collection__search-close-icon { display: inline; width: 0.75rem; height: auto; }
+
+  .collection__layout { display: flex; flex-direction: column; gap: 1.5rem; padding-top: 2.5rem; border-top: 1px solid; }
+  .collection__filters { min-width: 15rem; }
+  .collection__filters-heading {
+    display: flex; align-items: center; gap: 0.5rem; margin-block: 0.5rem;
+    font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.28em; color: #7d4b2f;
+  }
+  .collection__filter-toggle { display: flex; }
+  .collection__filter-icon { height: 1.5rem; width: auto; transform: rotate(90deg); }
+  .collection__filter-toggle[aria-expanded='false'] .collection__filter-icon { transform: none; }
+  .collection__filter-panel {
+    margin-top: 1rem; padding: 1rem; border: 1px solid #dfc2ae; border-radius: var(--radius-card);
+    background: linear-gradient(180deg, rgb(255 249 244 / 0.96), rgb(245 226 212 / 0.92)); box-shadow: var(--shadow-filter);
+  }
+  .collection__filter-panel.is-collapsed { display: none; }
+  .collection__filter-title { margin-bottom: 0.75rem; font-size: 0.75rem; line-height: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.25em; color: #8f5a39; }
+  .collection__categories { display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem; line-height: 1.25rem; color: #5e483c; }
+  .collection__category { display: flex; align-items: center; gap: 0.75rem; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; transition: color var(--duration-base); }
+  .collection__category:hover { color: var(--color-primary); }
+  .collection__checkbox { width: 0.875rem; height: 0.875rem; accent-color: #8f5231; }
+  .collection__results { flex: 1; min-width: 0; }
+  .collection__toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.5rem; }
+  .collection__sort {
+    padding: 0.5rem 1rem; border: 1px solid var(--color-input-border); border-radius: var(--radius-pill);
+    background: rgb(255 255 255 / 0.85); font-size: 0.875rem; line-height: 1.25rem; color: #5a4338; outline: none;
+  }
+  .collection__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem 1rem; }
+  .collection__grid > [hidden] { display: none; }
+  .collection__empty { padding-block: 2rem; text-align: center; color: var(--color-text); }
+  .collection__empty[hidden] { display: none; }
+  @media (min-width: 640px) {
+    .collection__layout { flex-direction: row; gap: 2.5rem; }
+    .collection__filters { max-width: 220px; }
+    .collection__filter-toggle { display: none; }
+    .collection__filter-panel.is-collapsed { display: block; }
+    .collection__toolbar { font-size: 1.5rem; line-height: 2rem; }
+    .collection__search-field { width: 50%; }
+  }
+  @media (min-width: 768px) { .collection__grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1024px) { .collection__grid { grid-template-columns: repeat(4, 1fr); } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.main_collection.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_first",
+      "label": "t:sections.main_collection.settings.title_first.label",
+      "default": "OUR"
+    },
+    {
+      "type": "text",
+      "id": "title_second",
+      "label": "t:sections.main_collection.settings.title_second.label",
+      "default": "PRODUCTS"
+    },
+    {
+      "type": "text",
+      "id": "filters_heading",
+      "label": "t:sections.main_collection.settings.filters_heading.label",
+      "default": "FILTERS"
+    },
+    {
+      "type": "text",
+      "id": "categories_heading",
+      "label": "t:sections.main_collection.settings.categories_heading.label",
+      "default": "Categories"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "t:sections.main_collection.blocks.category.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:sections.main_collection.blocks.category.settings.label.label",
+          "info": "t:sections.main_collection.blocks.category.settings.label.info",
+          "default": "COFFEE"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

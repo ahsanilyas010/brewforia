@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "coffee": {
+          "type": "category",
+          "settings": {
+            "label": "COFFEE"
+          }
+        },
+        "matcha": {
+          "type": "category",
+          "settings": {
+            "label": "MATCHA & FRIENDS"
+          }
+        },
+        "chocolate": {
+          "type": "category",
+          "settings": {
+            "label": "CHOCOLATE"
+          }
+        },
+        "munchables": {
+          "type": "category",
+          "settings": {
+            "label": "MUNCHABLES"
+          }
+        },
+        "spreads": {
+          "type": "category",
+          "settings": {
+            "label": "HONEY & SPREADS"
+          }
+        }
+      },
+      "block_order": [
+        "coffee",
+        "matcha",
+        "chocolate",
+        "munchables",
+        "spreads"
+      ],
+      "custom_css": [
+        ".section-title__text,.section-title__text strong {font-family: Didot, \"Bodoni MT\", \"Times New Roman\", serif; font-weight: 400; text-transform: uppercase; letter-spacing: -0.045em; font-size: clamp(26px,3vw,40px); line-height: 1.1; color: #3f2418;}",
+        ".section-title__rule {background-color: #3f2418;}"
+      ],
+      "settings": {
+        "title_first": "OUR",
+        "title_second": "PRODUCTS",
+        "filters_heading": "FILTERS",
+        "categories_heading": "Categories"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,25 @@
+{% doc %}
+  Renders a button, or a link styled as a button when url is given.
+
+  @param {string} text - Button label
+  @param {string} [url] - Renders an anchor when present
+  @param {string} [style] - primary (default), secondary or add-to-cart
+  @param {string} [type] - Button type attribute, default submit
+  @param {boolean} [disabled] - Disables the button
+  @param {string} [class] - Extra CSS class
+
+  @example
+  {% render 'button', text: 'Shop now', url: '/collections/all' %}
+{% enddoc %}
+
+{%- assign button_style = style | default: 'primary' -%}
+{%- if url -%}
+  <a class="button button--{{ button_style }} {{ class }}" href="{{ url }}">{{ text }}</a>
+{%- else -%}
+  <button class="button button--{{ button_style }} {{ class }}" type="{{ type | default: 'submit' }}"{% if disabled %} disabled{% endif %}>
+    <span>{{ text }}</span>
+    {%- if button_style == 'add-to-cart' -%}
+      <span aria-hidden="true">+</span>
+    {%- endif -%}
+  </button>
+{%- endif -%}

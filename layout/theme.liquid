@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    {% render 'meta-tags' %}
+    {% render 'css-variables' %}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  </head>
+
+  <body class="template-{{ request.page_type | handleize }}">
+    <a class="skip-link" href="#main">{{ 'general.skip_to_content' | t }}</a>
+
+    <div class="page-width">
+      {% sections 'header-group' %}
+    </div>
+
+    <main id="main" class="page-width" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    <div class="page-width">
+      {% sections 'footer-group' %}
+    </div>
+  </body>
+</html>

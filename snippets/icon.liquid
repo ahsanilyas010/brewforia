@@ -1,0 +1,14 @@
+{% doc %}
+  Renders one of the source's PNG icons from assets (icon-<name>.png).
+  Names: search, account, cart, menu, back, close, chevron-down, bin.
+
+  @param {string} name - Icon name
+  @param {string} [alt] - Alt text. Empty for decorative icons.
+  @param {string} [class] - Extra CSS class
+
+  @example
+  {% render 'icon', name: 'search', alt: 'Search' %}
+{% enddoc %}
+
+{%- assign icon_file = 'icon-' | append: name | append: '.png' -%}
+<img class="icon {{ class }}" src="{{ icon_file | asset_url }}" alt="{{ alt }}" width="16" height="16" loading="lazy">

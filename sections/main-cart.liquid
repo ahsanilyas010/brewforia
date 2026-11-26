@@ -1,0 +1,183 @@
+<section class="cart">
+  <div class="cart__header">
+    <div class="cart__title">
+      {% render 'section-title', text1: section.settings.title_first, text2: section.settings.title_second, tag: 'h1' %}
+    </div>
+  </div>
+
+  <cart-items data-section-id="{{ section.id }}">
+    <p class="visually-hidden" role="status" data-status></p>
+
+    {%- if cart.item_count == 0 -%}
+      <div class="cart__empty">
+        <p>{{ 'cart.empty' | t }}</p>
+        <a class="button button--primary cart__empty-link" href="{{ routes.all_products_collection_url }}">{{ 'general.continue_shopping' | t }}</a>
+      </div>
+    {%- else -%}
+      <ul class="cart__items">
+        {%- for item in cart.items -%}
+          <li class="cart__item">
+            <div class="cart__product">
+              {%- if item.image -%}
+                <a class="cart__image" href="{{ item.url }}">
+                  {{ item.image | image_url: width: 192 | image_tag: widths: '64, 96, 192', sizes: '(min-width: 640px) 96px, 64px', loading: 'lazy', alt: item.image.alt | default: item.product.title }}
+                </a>
+              {%- endif -%}
+              <div>
+                <a class="cart__name" href="{{ item.url }}">{{ item.product.title }}</a>
+                <div class="cart__chips">
+                  <span class="cart__chip cart__chip--price">{{ item.final_price | money_without_trailing_zeros }}</span>
+                  {%- unless item.product.has_only_default_variant -%}
+                    <span class="cart__chip cart__chip--size">{{ item.variant.title }}</span>
+                  {%- endunless -%}
+                </div>
+              </div>
+            </div>
+            <div class="cart__qty">
+              <label class="visually-hidden" for="qty-{{ section.id }}-{{ forloop.index }}">{{ 'cart.quantity' | t }}</label>
+              <input
+                id="qty-{{ section.id }}-{{ forloop.index }}"
+                class="cart__qty-input"
+                type="number"
+                min="1"
+                value="{{ item.quantity }}"
+                inputmode="numeric"
+                data-qty
+                data-line="{{ forloop.index }}"
+              >
+            </div>
+            <button class="cart__remove" type="button" data-remove data-line="{{ forloop.index }}">
+              <img class="cart__remove-icon" src="{{ 'icon-bin.png' | asset_url }}" alt="{{ 'cart.remove' | t }}" width="20" height="20" loading="lazy">
+            </button>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <div class="cart__footer">
+        <div class="cart__summary">
+          <div class="cart__total-box">
+            <div class="cart__total-title">
+              {% render 'section-title', text1: section.settings.total_first, text2: section.settings.total_second %}
+            </div>
+            <div class="cart__total-rows">
+              <div class="cart__total-row">
+                <p>{{ 'cart.subtotal' | t }}:</p>
+                <p>{{ cart.items_subtotal_price | money }}</p>
+              </div>
+              <hr class="cart__total-rule">
+              <div class="cart__total-row">
+                <p>{{ 'cart.shipping' | t }}:</p>
+                <p>{{ 'cart.shipping_at_checkout' | t }}</p>
+              </div>
+              <hr class="cart__total-rule">
+              <div class="cart__total-row cart__total-row--final">
+                <b>{{ 'cart.total' | t }}</b>
+                <b>{{ cart.total_price | money }}</b>
+              </div>
+            </div>
+          </div>
+          <div class="cart__checkout">
+            <form action="{{ routes.cart_url }}" method="post">
+              <button class="cart__checkout-button" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </cart-items>
+</section>
+
+{% stylesheet %}
+  .cart { padding-top: 2rem; border-top: 1px solid #e0c7b6; }
+  .cart__header { margin-bottom: 2rem; }
+  .cart__title { margin-top: 0.75rem; font-size: 1.5rem; line-height: 2rem; }
+  .cart__empty { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; padding-block: 2rem; color: var(--color-text); }
+  .cart__empty-link { padding: 0.75rem 2rem; }
+  .cart__items { display: flex; flex-direction: column; gap: 1.25rem; }
+  .cart__item {
+    display: grid; grid-template-columns: 1.5fr 0.6fr 0.5fr; align-items: center; gap: 0.5rem;
+    padding-block: 1.25rem; border-bottom: 1px solid #ead5c7; color: var(--color-text);
+  }
+  .cart__product { display: flex; align-items: flex-start; gap: 0.75rem; }
+  .cart__image img { width: 4rem; border-radius: var(--radius-cart-thumb); background: var(--color-surface); }
+  .cart__name { display: block; font-size: 0.75rem; line-height: 1.25rem; font-weight: 500; color: var(--color-heading); }
+  .cart__chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+  .cart__chip { background: #fff; box-shadow: var(--shadow-chip); }
+  .cart__chip--price { padding: 0.25rem 0.5rem; border-radius: var(--radius-pill); font-size: 0.75rem; line-height: 1rem; font-weight: 600; letter-spacing: 0.05em; color: var(--color-accent); }
+  .cart__chip--size { padding: 0.125rem 0.5rem; border: 1px solid #dec5b4; border-radius: var(--radius-pill); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-text); }
+  .cart__qty { justify-self: end; }
+  .cart__qty-input {
+    width: 100%; padding: 0.375rem 0.5rem; border: 1px solid #d9baa6; border-radius: var(--radius-pill);
+    background: rgb(255 255 255 / 0.85); text-align: center; font-size: 0.75rem; line-height: 1rem; color: var(--color-heading); outline: none;
+  }
+  .cart__qty-input:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  .cart__remove { justify-self: end; opacity: 0.7; transition: opacity var(--duration-base); }
+  .cart__remove:hover { opacity: 1; }
+  .cart__remove-icon { width: 1rem; height: auto; }
+  .cart__footer { display: flex; justify-content: flex-end; margin-block: 3rem; }
+  .cart__summary { width: 100%; }
+  .cart__total-box {
+    width: 100%; padding: 1.25rem; border: 1px solid #e2c8b7; border-radius: var(--radius-panel);
+    background: rgb(255 255 255 / 0.6); box-shadow: var(--shadow-total);
+  }
+  .cart__total-title { font-size: 1.5rem; line-height: 2rem; }
+  .cart__total-rows { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.75rem; font-size: 0.875rem; line-height: 1.25rem; color: var(--color-text); }
+  .cart__total-row { display: flex; justify-content: space-between; gap: 1rem; }
+  .cart__total-row--final { color: var(--color-primary); }
+  .cart__total-rule { border-color: #ead5c7; }
+  .cart__checkout { width: 100%; text-align: end; }
+  .cart__checkout-button {
+    display: inline-flex; align-items: center; justify-content: center; margin-top: 1.5rem; padding: 0.5rem 1.5rem;
+    border-radius: var(--radius-pill); background: var(--color-primary); color: #fff;
+    font-size: 0.75rem; line-height: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; transition: background-color var(--duration-base);
+  }
+  .cart__checkout-button:hover { background: var(--color-primary-hover); }
+  cart-items[aria-busy='true'] { opacity: 0.6; pointer-events: none; }
+  @media (min-width: 640px) {
+    .cart__item { grid-template-columns: 4fr 1.4fr 0.5fr; gap: 1rem; }
+    .cart__product { gap: 1.25rem; }
+    .cart__image img { width: 6rem; }
+    .cart__name { font-size: 1.125rem; line-height: 1.75rem; }
+    .cart__chips { gap: 1.25rem; }
+    .cart__chip--price { padding: 0.375rem 0.75rem; }
+    .cart__chip--size { padding: 0.25rem 0.75rem; font-size: 13px; }
+    .cart__qty-input { max-width: 6rem; padding: 0.5rem 0.75rem; font-size: 0.875rem; line-height: 1.25rem; }
+    .cart__remove-icon { width: 1.25rem; }
+    .cart__footer { margin-block: 5rem; }
+    .cart__summary { width: 450px; }
+    .cart__total-box { padding-inline: 1.5rem; }
+    .cart__checkout-button { margin-top: 2rem; padding: 0.75rem 2rem; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:sections.main_cart.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_first",
+      "label": "t:sections.main_cart.settings.title_first.label",
+      "default": "MY"
+    },
+    {
+      "type": "text",
+      "id": "title_second",
+      "label": "t:sections.main_cart.settings.title_second.label",
+      "default": "CART"
+    },
+    {
+      "type": "text",
+      "id": "total_first",
+      "label": "t:sections.main_cart.settings.total_first.label",
+      "default": "TOTAL"
+    },
+    {
+      "type": "text",
+      "id": "total_second",
+      "label": "t:sections.main_cart.settings.total_second.label",
+      "default": "AMOUNT"
+    }
+  ]
+}
+{% endschema %}

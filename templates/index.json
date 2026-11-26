@@ -1,0 +1,83 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner_BP3ehD": {
+      "type": "hero-banner",
+      "name": "t:sections.hero_banner.name",
+      "settings": {
+        "image": "shopify://shop_images/NEW.jpg",
+        "image_alt": "Brewphoria",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "latest": {
+      "type": "product-grid",
+      "custom_css": [
+        ".section-title__text,.section-title__text strong {font-family: Didot, \"Bodoni MT\", \"Times New Roman\", serif; font-weight: 400; text-transform: uppercase; letter-spacing: -0.045em; font-size: clamp(26px, 3vw, 40px); line-height: 1.1; color: #3f2418;}",
+        ".section-title__rule {background-color: #3f2418;}"
+      ],
+      "settings": {
+        "title_first": "Time To",
+        "title_second": "Treat Yourself",
+        "description": "Carefully selected coffees and artisanal chocolates, bold in character, cozy in spirit, and crafted to make every moment a little sweeter.",
+        "collection": "all-products",
+        "limit": 5
+      }
+    },
+    "best_sellers": {
+      "type": "product-grid",
+      "custom_css": [
+        ".product-grid__list {display: flex; flex-wrap: wrap; justify-content: center;}",
+        ".product-grid__list > li {width: calc(50% - 10px);}",
+        "@media (min-width: 1024px) {.product-grid__list > li {width: 18%; }}",
+        ".section-title__text,.section-title__text strong {font: 400 clamp(26px,3vw,40px) / 1.1 Didot, \"Bodoni MT\", \"Times New Roman\", serif; text-transform: uppercase; letter-spacing: -0.045em; color: #3f2418;}",
+        ".section-title__rule {background: #3f2418;}"
+      ],
+      "settings": {
+        "title_first": "BEST",
+        "title_second": "SELLERS",
+        "description": "Brewphoria favorites that keep finding their way back into carts, cups, and daily rituals.",
+        "collection": "best-sellers",
+        "limit": 2
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Subscribe for fresh drops, exclusive offers, and coffee notes worth opening.",
+        "text": "Join the Brewphoria list for new arrivals, limited releases, special bundles, and thoughtful updates that keep your coffee and chocolate ritual inspired.",
+        "button_label": "SUBSCRIBE"
+      }
+    },
+    "17957289323fceafbd": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "17957289931f2a6a14": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "1795729934e0fe0036": {
+      "type": "_blocks",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero_banner_BP3ehD",
+    "latest",
+    "best_sellers",
+    "newsletter",
+    "17957289323fceafbd",
+    "17957289931f2a6a14",
+    "1795729934e0fe0036"
+  ]
+}

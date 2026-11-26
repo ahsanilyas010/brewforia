@@ -1,0 +1,394 @@
+{
+  "sections": {
+    "header": {
+      "name": "Header",
+      "settings": {
+        "menu": {
+          "label": "Menu"
+        }
+      }
+    },
+    "footer": {
+      "name": "Footer",
+      "settings": {
+        "blurb": {
+          "label": "Description"
+        },
+        "company_heading": {
+          "label": "First column heading"
+        },
+        "menu": {
+          "label": "First column menu"
+        },
+        "extra_items": {
+          "label": "Extra text items",
+          "info": "One per line. Shown as plain text after the menu links."
+        },
+        "contact_heading": {
+          "label": "Contact heading"
+        },
+        "phone": {
+          "label": "Phone"
+        },
+        "email": {
+          "label": "Email"
+        }
+      }
+    },
+    "main_page": {
+      "name": "Page"
+    },
+    "main_404": {
+      "name": "Not found"
+    },
+    "main_collection": {
+      "name": "Collection",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "filters_heading": {
+          "label": "Filters heading"
+        },
+        "categories_heading": {
+          "label": "Categories heading"
+        }
+      },
+      "blocks": {
+        "category": {
+          "name": "Category",
+          "settings": {
+            "label": {
+              "label": "Label",
+              "info": "Matched against the product type, ignoring case."
+            }
+          }
+        }
+      }
+    },
+    "main_list_collections": {
+      "name": "Collections list"
+    },
+    "main_product": {
+      "name": "Product",
+      "settings": {
+        "trust_items": {
+          "label": "Trust list",
+          "info": "One line per item."
+        }
+      }
+    },
+    "main_cart": {
+      "name": "Cart",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "total_first": {
+          "label": "Total box title, first word"
+        },
+        "total_second": {
+          "label": "Total box title, second word"
+        }
+      }
+    },
+    "main_search": {
+      "name": "Search",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        }
+      }
+    },
+    "main_password": {
+      "name": "Password"
+    },
+    "style_guide": {
+      "name": "Style guide",
+      "settings": {
+        "product": {
+          "label": "Sample product"
+        }
+      }
+    },
+    "hero_banner": {
+      "name": "Hero banner",
+      "settings": {
+        "image": {
+          "label": "Image",
+          "info": "Leave empty to use the Brewphoria hero image shipped with the theme."
+        },
+        "image_alt": {
+          "label": "Image alt text"
+        },
+        "button_label": {
+          "label": "Button label"
+        },
+        "button_link": {
+          "label": "Button link"
+        }
+      }
+    },
+    "product_grid": {
+      "name": "Product grid",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "description": {
+          "label": "Description"
+        },
+        "collection": {
+          "label": "Collection",
+          "info": "Leave empty to use all products."
+        },
+        "limit": {
+          "label": "Products to show"
+        }
+      }
+    },
+    "newsletter": {
+      "name": "Newsletter",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "button_label": {
+          "label": "Button label"
+        }
+      }
+    },
+    "related_products": {
+      "name": "Related products",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "limit": {
+          "label": "Products to show"
+        }
+      }
+    },
+    "about_intro": {
+      "name": "About intro",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "image_alt": {
+          "label": "Image alt text"
+        },
+        "eyebrow": {
+          "label": "Eyebrow"
+        },
+        "lead": {
+          "label": "Lead paragraph"
+        },
+        "text": {
+          "label": "Paragraph"
+        },
+        "mission_title": {
+          "label": "Mission title"
+        },
+        "mission_text": {
+          "label": "Mission text"
+        },
+        "image": {
+          "label": "Image",
+          "info": "Leave empty to use the About image shipped with the theme."
+        }
+      }
+    },
+    "why_choose_us": {
+      "name": "Why choose us",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "heading": {
+          "label": "Heading"
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "feature": {
+          "name": "Feature",
+          "settings": {
+            "title": {
+              "label": "Title"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    },
+    "contact_panels": {
+      "name": "Contact",
+      "settings": {
+        "title_first": {
+          "label": "Title, first word"
+        },
+        "title_second": {
+          "label": "Title, second word"
+        },
+        "image_alt": {
+          "label": "Image alt text"
+        },
+        "eyebrow": {
+          "label": "Side panel eyebrow"
+        },
+        "heading": {
+          "label": "Side panel heading"
+        },
+        "text": {
+          "label": "Side panel text"
+        },
+        "call_label": {
+          "label": "Call button label"
+        },
+        "call_url": {
+          "label": "Call button link"
+        },
+        "email_label": {
+          "label": "Email button label"
+        },
+        "email_url": {
+          "label": "Email button link"
+        },
+        "image": {
+          "label": "Image",
+          "info": "Leave empty to use the contact image shipped with the theme."
+        }
+      },
+      "blocks": {
+        "tile": {
+          "name": "Info tile",
+          "settings": {
+            "label": {
+              "label": "Label"
+            },
+            "value": {
+              "label": "Value"
+            },
+            "description": {
+              "label": "Description"
+            },
+            "cta": {
+              "label": "Link text"
+            },
+            "url": {
+              "label": "Link",
+              "info": "Optional. Makes the tile clickable, for example tel: or mailto:."
+            }
+          }
+        },
+        "chip": {
+          "name": "Chip",
+          "settings": {
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      }
+    }
+  },
+  "settings_schema": {
+    "colors": {
+      "name": "Colors",
+      "color_primary": {
+        "label": "Primary (buttons, active nav, cart button)"
+      },
+      "color_primary_hover": {
+        "label": "Primary hover"
+      },
+      "color_heading": {
+        "label": "Heading and product name text"
+      },
+      "color_text": {
+        "label": "Body text"
+      },
+      "color_accent": {
+        "label": "Price and accent text"
+      },
+      "color_eyebrow": {
+        "label": "Eyebrow labels"
+      },
+      "color_badge": {
+        "label": "Cart count badge"
+      },
+      "color_border": {
+        "label": "Icon button and card borders"
+      },
+      "color_input_border": {
+        "label": "Input borders"
+      },
+      "color_surface": {
+        "label": "Image placeholder surface"
+      },
+      "color_header_start": {
+        "label": "Header gradient start"
+      },
+      "color_header_end": {
+        "label": "Header gradient end"
+      },
+      "color_header_border": {
+        "label": "Header border"
+      }
+    },
+    "header": {
+      "name": "Header"
+    },
+    "logo": {
+      "name": "Logo",
+      "logo": {
+        "label": "Logo image",
+        "info": "Leave empty to use the Brewphoria logo shipped with the theme."
+      },
+      "logo_width": {
+        "label": "Logo width"
+      }
+    },
+    "social": {
+      "name": "Social links",
+      "instagram": {
+        "label": "Instagram URL"
+      }
+    },
+    "brand": {
+      "name": "Brand",
+      "brand_name": {
+        "label": "Brand name",
+        "info": "Shown in the footer, mobile menu, alt text and page titles. The source storefront uses Brewphoria."
+      }
+    }
+  }
+}
