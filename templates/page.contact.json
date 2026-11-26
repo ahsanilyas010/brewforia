@@ -55,19 +55,19 @@
         "c1": {
           "type": "chip",
           "settings": {
-            "text": "Order support"
+            "text": "Order Support"
           }
         },
         "c2": {
           "type": "chip",
           "settings": {
-            "text": "Delivery updates"
+            "text": "Delivery Updates"
           }
         },
         "c3": {
           "type": "chip",
           "settings": {
-            "text": "Product guidance"
+            "text": "Product Guidance"
           }
         }
       },
