@@ -11,6 +11,9 @@
   "sections": {
     "intro": {
       "type": "about-intro",
+      "custom_css": [
+        ".about-intro__image {height: auto; object-fit: contain; align-self: flex-start;}"
+      ],
       "settings": {
         "title_first": "ABOUT",
         "title_second": "US",
