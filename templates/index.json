@@ -12,10 +12,10 @@
     "hero": {
       "type": "hero-banner",
       "settings": {
-        "image": "shopify://shop_images/WhatsApp_Image_2026-11-26_at_4.30.28_PM.jpg",
+        "image": "shopify://shop_images/WhatsApp_Image_2026-11-26_at_4.33.16_PM.jpg",
         "image_alt": "Brewphoria",
         "button_label": "Shop Now",
-        "button_link": ""
+        "button_link": "shopify://collections/all"
       }
     },
     "latest": {
