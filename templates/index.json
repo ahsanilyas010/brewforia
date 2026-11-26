@@ -36,8 +36,11 @@
     "best_sellers": {
       "type": "product-grid",
       "custom_css": [
-        ".section-title__text,.section-title__text strong {font-family: Didot, \"Bodoni MT\", \"Times New Roman\", serif; font-weight: 400; text-transform: uppercase; letter-spacing: -0.045em; font-size: clamp(26px,3vw,40px); line-height: 1.1; color: #3f2418;}",
-        ".section-title__rule {background-color: #3f2418;}"
+        ".product-grid__list {display: flex; flex-wrap: wrap; justify-content: center;}",
+        ".product-grid__list > li {width: calc(50% - 10px);}",
+        "@media (min-width: 1024px) {.product-grid__list > li {width: 18%; }}",
+        ".section-title__text,.section-title__text strong {font: 400 clamp(26px,3vw,40px) / 1.1 Didot, \"Bodoni MT\", \"Times New Roman\", serif; text-transform: uppercase; letter-spacing: -0.045em; color: #3f2418;}",
+        ".section-title__rule {background: #3f2418;}"
       ],
       "settings": {
         "title_first": "BEST",
