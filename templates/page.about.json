@@ -1,8 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "intro": {
       "type": "about-intro",
-      "settings": {}
+      "settings": {
+        "title_first": "ABOUT",
+        "title_second": "US",
+        "image_alt": "About our store",
+        "eyebrow": "Brewed with purpose",
+        "lead": "Brewphoria began the way the best things do: with friendship.\nWe are three women who met as schoolgirls in Peshawar. Life took us in different directions. One of us stayed close to home in Peshawar and Islamabad, one returned to Indonesia, the country she grew up in, and one made her home in Karachi. But distance never loosened the bond. Through every move and every season, we stayed in touch, and a cup of coffee and a piece of chocolate were always part of the conversation.",
+        "text": "Then our friend from Indonesia introduced us to the flavours of her home, and something clicked. These tastes were rich, comforting, and unlike anything we'd grown up with. We thought: why shouldn't the Pakistani palate get to enjoy this too?\nToday, it has never been easier to experience cultures you've never lived in. Trade and travel have brought the flavours of Indonesia, Korea, Japan, and beyond within reach of anyone curious enough to taste them. Brewphoria is our small way of celebrating that: a fusion of cultures, shared one cup and one bite at a time.\nWe are an unlikely trio, bonded over coffee and chocolate. We hope that when you open a Brewphoria bag or box, you feel a little of that warmth, and maybe think of someone you'd love to share it with.",
+        "mission_title": "Our Mission",
+        "mission_text": "We're here to bring the flavours we've fallen in love with to your table. Brewphoria was born from friendship, and we carry that spirit into everything we do: choosing every product with care, sharing tastes from across cultures, and making sure your experience feels warm and welcoming from your first click to the moment your order arrives."
+      }
     },
     "why": {
       "type": "why-choose-us",
@@ -34,7 +52,12 @@
         "f2",
         "f3"
       ],
-      "settings": {}
+      "settings": {
+        "title_first": "WHY",
+        "title_second": "CHOOSE US",
+        "heading": "A richer shopping experience, designed to feel polished from browse to brew.",
+        "text": "We blend standout products, thoughtful presentation, and dependable service so the whole experience feels premium instead of ordinary."
+      }
     }
   },
   "order": [
