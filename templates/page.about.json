@@ -28,22 +28,22 @@
         "f1": {
           "type": "feature",
           "settings": {
-            "title": "Quality With Character",
-            "text": "Every item is chosen for taste, consistency, and feel, so you are not just buying products, you are choosing a collection with personality and care behind it."
+            "title": "No Compromise on Flavour",
+            "text": "Every coffee and chocolate is chosen for its taste, consistency, and character. If it doesn't taste as good as it should, it doesn't make the cut."
           }
         },
         "f2": {
           "type": "feature",
           "settings": {
-            "title": "Simple, Seamless Shopping",
-            "text": "We keep the experience clean and intuitive, making it easy to explore products, compare options, and place your order without clutter or confusion."
+            "title": "Mindful Indulgence",
+            "text": "We favour thoughtful ingredients and treats made to be savoured, not overdone. Dark chocolate, wholesome seeds and berries, and coffee you can enjoy your way, so indulgence fits comfortably into a balanced day."
           }
         },
         "f3": {
           "type": "feature",
           "settings": {
-            "title": "Support That Feels Human",
-            "text": "Questions, updates, and problem-solving are handled with clarity and warmth so you always feel looked after before, during, and after your order arrives."
+            "title": "Guilt-Free, Conflict-Free",
+            "text": "We care where our products come from and how they're made. We back sustainable practices and conflict-free sourcing, so every sip and bite sits well with your values."
           }
         }
       },
@@ -55,8 +55,8 @@
       "settings": {
         "title_first": "WHY",
         "title_second": "CHOOSE US",
-        "heading": "A richer shopping experience, designed to feel polished from browse to brew.",
-        "text": "We blend standout products, thoughtful presentation, and dependable service so the whole experience feels premium instead of ordinary."
+        "heading": "Indulgence you can feel good about.",
+        "text": "At Brewphoria, we believe you shouldn't have to choose between what tastes good and what feels right. Everything we offer is chosen with care for flavour, for people, and for the planet."
       }
     }
   },
