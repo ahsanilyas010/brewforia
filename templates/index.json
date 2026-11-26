@@ -32,6 +32,8 @@
     "best_sellers": {
       "type": "product-grid",
       "custom_css": [
+        ".section-title__text,.section-title__text strong {font-family: \"EB Garamond\", serif; color: #3f2418;}",
+        ".section-title__rule {background-color: #3f2418;}",
         ".product-grid__list {display: flex; flex-wrap: wrap; justify-content: center;}",
         ".product-grid__list > li {flex: 0 0 calc((100% - 1.25rem) / 2);}",
         "@media (min-width: 1024px) {.product-grid__list > li {flex-basis: calc((100% - 3.75rem) / 4); }}",
