@@ -1,6 +1,218 @@
+{% doc %}
+  @prompt
+    Create a product collection grid with category checkbox filters for Brewphoria, matching the current warm cream and brown storefront style. Include All Products, Coffee, Matcha & Friends, Chocolate, Munchables, and Honey & Spreads. Filter real products by their exact product types. All Products is selected initially and shows every product; selecting it clears the category selections, selecting a category unchecks All Products, and clearing all categories restores All Products. Support multiple selected categories with OR matching. Ensure filtering works across the whole collection, not just products on the current pagination page. Include editable labels, accessible checkbox controls, product cards, and an empty-results message. This is intended as a replacement for the existing collection grid/filter section, not a second duplicate grid.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-collection-filter-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 32px 20px;
+    background: {{ block.settings.cream_color }};
+    color: {{ block.settings.text_color }};
+  }
+  .ai-collection-filter-{{ ai_gen_id }}__filters { display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 0 0 28px; padding: 0; border: 0; }
+  .ai-collection-filter-{{ ai_gen_id }}__filter { display: inline-flex; align-items: center; gap: 9px; min-height: 42px; padding: 8px 14px; border: 1px solid {{ block.settings.border_color }}; border-radius: 24px; background: #fffaf5; color: {{ block.settings.text_color }}; font-size: 15px; cursor: pointer; }
+  .ai-collection-filter-{{ ai_gen_id }}__filter input { width: 18px; height: 18px; margin: 0; accent-color: {{ block.settings.brown_color }}; cursor: pointer; }
+  .ai-collection-filter-{{ ai_gen_id }}__filter:focus-within { outline: 2px solid {{ block.settings.brown_color }}; outline-offset: 2px; }
+  .ai-collection-filter-{{ ai_gen_id }}__grid { display: grid; grid-template-columns: repeat({{ block.settings.columns_desktop }}, minmax(0, 1fr)); gap: 24px 18px; }
+  .ai-collection-filter-{{ ai_gen_id }}__card { min-width: 0; overflow: hidden; border: 1px solid {{ block.settings.border_color }}; border-radius: 12px; background: #fffaf5; color: {{ block.settings.text_color }}; }
+  .ai-collection-filter-{{ ai_gen_id }}__image-wrap { display: block; aspect-ratio: 1 / 1; overflow: hidden; background: #ead9cd; }
+  .ai-collection-filter-{{ ai_gen_id }}__image { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .ai-collection-filter-{{ ai_gen_id }}__placeholder { display:flex; align-items:center; justify-content:center; width:100%; height:100%; }
+  .ai-collection-filter-{{ ai_gen_id }}__placeholder svg { width: 70%; height: 70%; color: {{ block.settings.brown_color }}; }
+  .ai-collection-filter-{{ ai_gen_id }}__info { padding: 14px; }
+  .ai-collection-filter-{{ ai_gen_id }}__title { margin: 0 0 8px; color: {{ block.settings.brown_color }}; font-size: 17px; line-height: 1.35; }
+  .ai-collection-filter-{{ ai_gen_id }}__title a { color: inherit; text-decoration: none; }
+  .ai-collection-filter-{{ ai_gen_id }}__title a:hover { text-decoration: underline; }
+  .ai-collection-filter-{{ ai_gen_id }}__price { margin: 0; color: {{ block.settings.text_color }}; font-size: 15px; }
+  .ai-collection-filter-{{ ai_gen_id }}__empty { padding: 36px 18px; text-align: center; color: {{ block.settings.text_color }}; }
+  .ai-collection-filter-{{ ai_gen_id }}__status { margin: 0 0 16px; color: {{ block.settings.text_color }}; }
+  @media (max-width: 749px) {
+    .ai-collection-filter-{{ ai_gen_id }} { padding: 24px 14px; }
+    .ai-collection-filter-{{ ai_gen_id }}__grid { grid-template-columns: repeat({{ block.settings.columns_mobile }}, minmax(0, 1fr)); gap: 16px 12px; }
+    .ai-collection-filter-{{ ai_gen_id }}__info { padding: 11px; }
+    .ai-collection-filter-{{ ai_gen_id }}__title { font-size: 15px; }
+  }
+{% endstyle %}
+
+<collection-category-grid-{{ ai_gen_id }} class="ai-collection-filter-{{ ai_gen_id }}" data-collection-url="{% if block.settings.collection != blank %}{{ block.settings.collection.url }}{% elsif collection != blank %}{{ collection.url }}{% endif %}" data-all-label="{{ block.settings.all_label | escape }}" data-empty-message="{{ block.settings.empty_message | escape }}" {{ block.shopify_attributes }}>
+  <fieldset class="ai-collection-filter-{{ ai_gen_id }}__filters">
+    <legend class="visually-hidden">{{ block.settings.filter_legend | escape }}</legend>
+    <label class="ai-collection-filter-{{ ai_gen_id }}__filter"><input type="checkbox" data-all-filter checked><span>{{ block.settings.all_label | escape }}</span></label>
+    {% for i in (1..5) %}
+      {% liquid
+        assign category_label_key = 'category_' | append: i | append: '_label'
+        assign category_type_key = 'category_' | append: i | append: '_type'
+        assign category_label = block.settings[category_label_key]
+        assign category_type = block.settings[category_type_key]
+      %}
+      {% if category_label != blank and category_type != blank %}
+        <label class="ai-collection-filter-{{ ai_gen_id }}__filter"><input type="checkbox" data-category-type="{{ category_type | escape }}"><span>{{ category_label | escape }}</span></label>
+      {% endif %}
+    {% endfor %}
+  </fieldset>
+  <p class="ai-collection-filter-{{ ai_gen_id }}__status" data-status aria-live="polite"></p>
+  <div class="ai-collection-filter-{{ ai_gen_id }}__grid" data-grid>
+    {% assign source_collection = block.settings.collection %}
+    {% if source_collection == blank %}{% assign source_collection = collection %}{% endif %}
+    {% if source_collection != blank %}
+      {% paginate source_collection.products by 250 %}
+        {% for product in source_collection.products %}
+          <article class="ai-collection-filter-{{ ai_gen_id }}__card" data-product-type="{{ product.type | escape }}">
+            <a class="ai-collection-filter-{{ ai_gen_id }}__image-wrap" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+              {% if product.featured_image %}<img class="ai-collection-filter-{{ ai_gen_id }}__image" src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}">{% else %}<div class="ai-collection-filter-{{ ai_gen_id }}__placeholder">{{ 'product-apparel-1' | placeholder_svg_tag }}</div>{% endif %}
+            </a>
+            <div class="ai-collection-filter-{{ ai_gen_id }}__info"><h2 class="ai-collection-filter-{{ ai_gen_id }}__title"><a href="{{ product.url }}">{{ product.title | escape }}</a></h2><p class="ai-collection-filter-{{ ai_gen_id }}__price">{{ product.price | money }}</p></div>
+          </article>
+        {% endfor %}
+      {% endpaginate %}
+    {% else %}
+      <p class="ai-collection-filter-{{ ai_gen_id }}__empty">Select a collection in the block settings to display products.</p>
+    {% endif %}
+  </div>
+  <p class="ai-collection-filter-{{ ai_gen_id }}__empty" data-empty hidden>{{ block.settings.empty_message | escape }}</p>
+</collection-category-grid-{{ ai_gen_id }}>
+
+<script>
+(function() {
+  const tagName = 'collection-category-grid-{{ ai_gen_id }}';
+  if (customElements.get(tagName)) return;
+  class CollectionCategoryGrid extends HTMLElement {
+    connectedCallback() {
+      this.grid = this.querySelector('[data-grid]');
+      this.all = this.querySelector('[data-all-filter]');
+      this.checks = Array.from(this.querySelectorAll('[data-category-type]'));
+      this.empty = this.querySelector('[data-empty]');
+      this.status = this.querySelector('[data-status]');
+      this.ready = false;
+      this.all.addEventListener('change', () => {
+        if (this.all.checked) this.checks.forEach((input) => { input.checked = false; });
+        else if (!this.checks.some((input) => input.checked)) this.all.checked = true;
+        this.applyFilters();
+      });
+      this.checks.forEach((input) => input.addEventListener('change', () => {
+        this.all.checked = !this.checks.some((item) => item.checked);
+        this.applyFilters();
+      }));
+      this.loadCompleteCollection();
+    }
+    async loadCompleteCollection() {
+      const url = this.dataset.collectionUrl;
+      if (!url || !this.grid) return;
+      try {
+        let page = 1;
+        const products = [];
+        while (page <= 100) {
+          const response = await fetch(`${url}/products.json?limit=250&page=${page}`, { credentials: 'same-origin' });
+          if (!response.ok) break;
+          const data = await response.json();
+          const batch = Array.isArray(data.products) ? data.products : [];
+          products.push(...batch);
+          if (batch.length < 250) break;
+          page += 1;
+        }
+        if (products.length) {
+          const fragment = document.createDocumentFragment();
+          products.forEach((product) => fragment.appendChild(this.createCard(product)));
+          this.grid.replaceChildren(fragment);
+        }
+      } catch (error) {
+        this.status.textContent = '';
+      }
+      this.ready = true;
+      this.applyFilters();
+    }
+    createCard(product) {
+      const card = document.createElement('article');
+      card.className = 'ai-collection-filter-{{ ai_gen_id }}__card';
+      card.dataset.productType = product.product_type || '';
+      const imageLink = document.createElement('a');
+      imageLink.className = 'ai-collection-filter-{{ ai_gen_id }}__image-wrap';
+      imageLink.href = product.url || '#';
+      imageLink.setAttribute('aria-label', product.title || 'Product');
+      if (product.images && product.images[0]) {
+        const image = document.createElement('img');
+        image.className = 'ai-collection-filter-{{ ai_gen_id }}__image';
+        image.src = product.images[0].src;
+        image.alt = product.images[0].alt || product.title || '';
+        image.loading = 'lazy';
+        imageLink.appendChild(image);
+      } else {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'ai-collection-filter-{{ ai_gen_id }}__placeholder';
+        placeholder.innerHTML = {{ 'product-apparel-1' | placeholder_svg_tag | json }};
+        imageLink.appendChild(placeholder);
+      }
+      const info = document.createElement('div');
+      info.className = 'ai-collection-filter-{{ ai_gen_id }}__info';
+      const heading = document.createElement('h2');
+      heading.className = 'ai-collection-filter-{{ ai_gen_id }}__title';
+      const link = document.createElement('a');
+      link.href = product.url || '#';
+      link.textContent = product.title || '';
+      heading.appendChild(link);
+      const price = document.createElement('p');
+      price.className = 'ai-collection-filter-{{ ai_gen_id }}__price';
+      const amount = product.variants && product.variants[0] ? Number(product.variants[0].price) : 0;
+      price.textContent = new Intl.NumberFormat(undefined, { style: 'currency', currency: '{{ cart.currency.iso_code | default: shop.currency }}' }).format(amount);
+      info.append(heading, price);
+      card.append(imageLink, info);
+      return card;
+    }
+    applyFilters() {
+      const selected = this.checks.filter((input) => input.checked).map((input) => input.dataset.categoryType);
+      let visible = 0;
+      this.grid.querySelectorAll('[data-product-type]').forEach((card) => {
+        const show = selected.length === 0 || selected.includes(card.dataset.productType);
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      this.empty.hidden = visible !== 0;
+      this.status.textContent = this.ready ? `${visible} products` : '';
+    }
+  }
+  customElements.define(tagName, CollectionCategoryGrid);
+})();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Collection type filters",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "select", "id": "columns_desktop", "label": "Desktop columns", "options": [{ "value": "2", "label": "2" }, { "value": "3", "label": "3" }, { "value": "4", "label": "4" }], "default": "4" },
+    { "type": "select", "id": "columns_mobile", "label": "Mobile columns", "options": [{ "value": "1", "label": "1" }, { "value": "2", "label": "2" }], "default": "2" },
+    { "type": "text", "id": "filter_legend", "label": "Filter group label", "default": "Filter products by category" },
+    { "type": "text", "id": "all_label", "label": "All products label", "default": "All Products" },
+    { "type": "text", "id": "empty_message", "label": "Empty results message", "default": "No products match these categories." },
+    { "type": "header", "content": "Category 1" },
+    { "type": "text", "id": "category_1_label", "label": "Label", "default": "Coffee" },
+    { "type": "text", "id": "category_1_type", "label": "Exact product type", "default": "Coffee" },
+    { "type": "header", "content": "Category 2" },
+    { "type": "text", "id": "category_2_label", "label": "Label", "default": "Matcha & Friends" },
+    { "type": "text", "id": "category_2_type", "label": "Exact product type", "default": "Matcha & Friends" },
+    { "type": "header", "content": "Category 3" },
+    { "type": "text", "id": "category_3_label", "label": "Label", "default": "Chocolate" },
+    { "type": "text", "id": "category_3_type", "label": "Exact product type", "default": "Chocolate" },
+    { "type": "header", "content": "Category 4" },
+    { "type": "text", "id": "category_4_label", "label": "Label", "default": "Munchables" },
+    { "type": "text", "id": "category_4_type", "label": "Exact product type", "default": "Munchables" },
+    { "type": "header", "content": "Category 5" },
+    { "type": "text", "id": "category_5_label", "label": "Label", "default": "Honey & Spreads" },
+    { "type": "text", "id": "category_5_type", "label": "Exact product type", "default": "Honey & Spreads" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "cream_color", "label": "Cream background", "default": "#f7f0e7" },
+    { "type": "color", "id": "brown_color", "label": "Brown headings", "default": "#3f2b21" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#4b392e" },
+    { "type": "color", "id": "border_color", "label": "Borders", "default": "#d8b8a4" }
+  ],
+  "presets": [{ "name": "Collection type filters" }],
+  "tag": null,
+  "class": "collection-type-filter-block"
+}
 {% endschema %}
