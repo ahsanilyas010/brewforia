@@ -16,6 +16,6 @@
   </div>
   <div class="product-card__body">
     <span class="product-card__title">{{ product.title }}</span>
-    {% render 'price', price: product.price_min, from: true %}
+    {% render 'price', price: product.price_min, from: product.price_varies %}
   </div>
 </a>
