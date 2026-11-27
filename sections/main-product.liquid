@@ -1,5 +1,8 @@
 {%- liquid
-  assign only_default = product.has_only_default_variant
+  assign only_default = false
+if product.variants.size == 1
+  assign only_default = true
+endif
   assign first_available = product.first_available_variant
   assign from_price = product.price_min | money_without_trailing_zeros
   assign trust_items = section.settings.trust_items | newline_to_br | strip_newlines | split: '<br />'
