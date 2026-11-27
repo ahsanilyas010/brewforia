@@ -13,7 +13,7 @@
       "type": "hero-banner",
       "name": "t:sections.hero_banner.name",
       "settings": {
-        "image": "shopify://shop_images/NEW.jpg",
+        "image": "shopify://shop_images/WhatsApp_Image_2026-11-26_at_7.35.22_PM.jpg",
         "image_alt": "Brewphoria",
         "button_label": "Shop Now",
         "button_link": "shopify://collections/all"
@@ -39,7 +39,7 @@
         ".product-grid__list {display: flex; flex-wrap: wrap; justify-content: center;}",
         ".product-grid__list > li {width: calc(50% - 10px);}",
         "@media (min-width: 1024px) {.product-grid__list > li {width: 18%; }}",
-        ".section-title__text,.section-title__text strong {font: 400 clamp(26px,3vw,40px) / 1.1 Didot, \"Bodoni MT\", \"Times New Roman\", serif; text-transform: uppercase; letter-spacing: -0.045em; color: #3f2418;}",
+        ".section-title__text,.section-title__text strong {font: 400 clamp(26px, 3vw, 40px) / 1.1 Didot, \"Bodoni MT\", \"Times New Roman\", serif; text-transform: uppercase; letter-spacing: -0.045em; color: #3f2418;}",
         ".section-title__rule {background: #3f2418;}"
       ],
       "settings": {
